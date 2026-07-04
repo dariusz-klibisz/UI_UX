@@ -24,6 +24,7 @@ This file covers design systems as products: what they are and when they pay off
   - [Accessibility baked into components](#accessibility-baked-into-components)
 - [Documentation and operations](#documentation-and-operations)
   - [Documentation practices](#documentation-practices)
+  - [Stable test hooks](#stable-test-hooks)
   - [Theming: dark mode, multi-brand, density](#theming-dark-mode-multi-brand-density)
   - [Versioning and deprecation](#versioning-and-deprecation)
   - [Governance and contribution models](#governance-and-contribution-models)
@@ -291,6 +292,7 @@ This file covers design systems as products: what they are and when they pay off
 - Defaults = the most common accessible case; require explicit opt-in for risky behavior (e.g., `<Modal dismissible={false}>` must be deliberate).
 - Forward refs, spread ARIA/data attributes to the root element, and document which element receives them.
 - Type strictly (TypeScript): make invalid prop combinations type errors where possible (discriminated unions for variant-dependent props).
+- Guard runtime inputs in presentational components — compile-time types don't protect against runtime data. Clamp numeric props that reach inline styles, SVG geometry, or width calculations (percentages clamped to 0–100; counts checked for finiteness — `NaN`/negative values render broken bars and invalid markup), and render a safe fallback (or nothing) for unknown enum values rather than throwing during (server-side) render. Rule of thumb: for bad data, presentational components degrade — they don't crash the page.
 - Keep required props ≤2; a component demanding 6 props to render will be wrapped or avoided.
 
 **Verification checklist:**
@@ -299,6 +301,7 @@ This file covers design systems as products: what they are and when they pay off
 - [ ] Variants are an intentional, documented enum — not an open styling escape hatch.
 - [ ] No style-only components that omit semantics (a "Button" rendering a bare `<div>` fails review).
 - [ ] Props follow the published library-wide vocabulary; events use the standard naming.
+- [ ] Numeric props feeding styles/geometry are clamped and finiteness-guarded; unknown enum values degrade to a documented fallback instead of throwing.
 
 **Related:** [#composition-vs-configuration](#composition-vs-configuration), [#variants-and-states](#variants-and-states), [#accessibility-baked-into-components](#accessibility-baked-into-components).
 
@@ -452,6 +455,35 @@ This file covers design systems as products: what they are and when they pay off
 **Related:** [#component-api-design](#component-api-design), [09-content-ux-writing.md](09-content-ux-writing.md), [#design-dev-handoff](#design-dev-handoff).
 
 **Sources:** [NN/g: Design Systems 101](https://www.nngroup.com/articles/design-systems-101/), [Shopify Polaris component docs (template exemplar)](https://polaris.shopify.com/components), [Carbon: Content overview + component pages](https://carbondesignsystem.com/guidelines/content/overview/), [GOV.UK Design System (research notes per component)](https://design-system.service.gov.uk/components/).
+
+### Stable test hooks
+
+**Definition:** Treating test selectors as part of the component contract: interactive components expose stable, centrally documented test-hook attributes (commonly `data-testid`, following a published naming convention such as kebab-case `feature-element[-modifier]`), and the hooks are declared alongside the component (exported constants and/or the component's docs page) so tests reference declared hooks rather than guessing selectors. This is a design-system governance concern — the hook contract ships with the component like props and tokens do — not a build-tooling detail.
+
+**Reasoning / Evidence:** Convention-without-enforcement fails in both directions — a recurring finding in large-scale code review of real products: components ship without hooks, so tests fall back to brittle text or CSS-class selectors that break on copy edits or restyling; and tests assert fabricated hook names that match nothing, silently skipping (or vacuously passing) forever. Cypress and Playwright both recommend dedicated test attributes decoupled from text and styling; Testing Library ranks `data-testid` as the last-resort query after role/label queries. Lint/CI enforcement (interactive components must carry hooks; test selectors must resolve to declared hooks) beats prose convention.
+
+**When to use:**
+- Systems with E2E/integration suites maintained across teams; any component whose visible text or class names change independently of behavior.
+
+**When NOT to use / exceptions:**
+- Prefer accessibility-first queries (role + accessible name) where unambiguous — they double as accessibility verification; test IDs are for elements without stable roles/names and for repeated instances.
+- Don't add hooks to decorative or static content (headings, body text, icons) — query those by role or text.
+
+**Pros:**
+- Selectors survive copy and styling changes; hook names become shared vocabulary between component docs and test suites; missing or fabricated hooks are machine-detectable.
+
+**Cons:**
+- Extra attribute noise in markup (can be mitigated by stripping test IDs in production builds if desired); one more contract to version — renaming a hook is a breaking change for consumers' tests.
+
+**Implementation guidance:**
+- Publish one naming convention library-wide, e.g. kebab-case `feature-element[-modifier]` with the modifier distinguishing repeated instances (`result-row-${id}`).
+- Declare hooks next to the component — exported constants or a documented table on the component page; tests import or reference declared names, never ad-hoc strings.
+- Enforce both directions in CI: a lint rule requiring hooks on interactive elements, and test tooling that fails (rather than skips) when a selector resolves to nothing.
+- Decide and document the production-stripping policy explicitly (keep hooks for supportability vs strip for markup hygiene) so teams don't decide per project.
+
+**Related:** [#component-api-design](#component-api-design), [#documentation-practices](#documentation-practices), [#governance-and-contribution-models](#governance-and-contribution-models).
+
+**Sources:** [Cypress: Best Practices — Selecting Elements](https://docs.cypress.io/app/core-concepts/best-practices#Selecting-Elements), [Playwright: Locators — locate by test id](https://playwright.dev/docs/locators#locate-by-test-id), [Testing Library: About Queries — Priority](https://testing-library.com/docs/queries/about/#priority), [MDN: `data-*` global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/data-*).
 
 ### Theming: dark mode, multi-brand, density
 
@@ -723,11 +755,12 @@ This file covers design systems as products: what they are and when they pay off
 | Theming via tokens | Themes = value re-mappings of semantic names; components never change | Dark: no pure black (#121212+), desaturate 1–2 steps, ≥4.5:1 per theme |
 | Token tooling | JSON source (DTCG) → Style Dictionary → CSS/Swift/Kotlin + Figma Variables sync | 1 source, N outputs; CI contrast + coverage checks |
 | Atomic design | Keep compositional thinking, drop chemistry taxonomy; organize by function | 2 tiers: components + patterns; promote after 3 uses |
-| Component APIs | Enum variants over booleans; accessible defaults; shared prop vocabulary | ≤2 required props; sizes sm/md/lg |
+| Component APIs | Enum variants over booleans; accessible defaults; shared prop vocabulary; clamp/guard numeric props at runtime — degrade, don't crash | ≤2 required props; sizes sm/md/lg; percentages clamped 0–100 |
 | Composition vs config | Config for leaf components, compound composition for containers, recipes for consistency | Fork/copy events = composition signal |
 | Variants & states | Full variant×state matrix required per component; snapshot-test the grid | 6 core states; 3 emphasis levels + danger; targets ≥24px (44–48px touch) |
 | A11y in components | APG-compliant behavior baked in; native HTML first; tokens guarantee contrast | axe catches ~30–40%; 4.5:1 text, 3:1 UI/focus |
 | Documentation | Per-component: when-to-use, do/don't pairs, states, a11y, generated API docs — one page for design+code | Docs ≈ 30–50% of component cost†; ≥2 do/don't pairs |
+| Test hooks | Declared, lint-enforced `data-testid` hooks on interactive elements; tests use declared names, role/label queries first | kebab-case `feature-element[-modifier]`; prod stripping optional |
 | Theming axes | Dark/high-contrast, multi-brand, density — all as token re-maps, never component forks | Rows 52/40/32px; no `if (brand)` in components |
 | Versioning | Semver + deprecation pipeline + codemods; publish what counts as breaking | Remove after ≥2 minors or 6mo; support current+previous major |
 | Governance | Hybrid model: core owns foundations, teams contribute through a quality-gated ladder | Council biweekly; rule of three for promotion |

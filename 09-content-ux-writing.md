@@ -542,6 +542,7 @@ This file covers the words in interfaces: plain language, microcopy (buttons, li
 - Currency: symbol + ISO code where multiple currencies coexist ("$1,200 USD"); position per locale rules (CLDR handles it).
 - Units: non-breaking space between value and unit ("12 GB"); metric/imperial per locale with a user override; file sizes with 1 decimal max ("3.4 MB").
 - Durations: "2h 34m" style for compact UI; avoid "0:02:34" ambiguity (hours or minutes leading?).
+- Server-rendered output: never format via the *ambient* runtime locale (`toLocaleDateString()` with no locale argument, `Intl.Collator(undefined)`) — the server's locale and ICU build differ from the browser's, producing hydration mismatches and content that flickers on load. Pass the user's resolved locale explicitly through a shared formatting utility.
 
 **Related:** [#internationalization-and-localization](#internationalization-and-localization), [03-visual-design.md](03-visual-design.md) (tabular figures), [12-data-tables-dashboards.md](12-data-tables-dashboards.md) (data tables).
 
@@ -672,6 +673,7 @@ This file covers the words in interfaces: plain language, microcopy (buttons, li
 **Implementation guidance:**
 - Layout: design at +40% width headroom for labels/buttons; test with pseudo-localization (e.g., "Àççôûñţ Šéţţîñĝš~~~") in CI screenshots; never fix button widths to English text.
 - Strings: externalize all copy; use ICU MessageFormat for plurals/genders/placeholders; never concatenate fragments; give translators context notes and screenshots per string.
+- Audit the strings a visible-copy review misses — hardcoded source-language text accumulates exactly where nobody looks: `aria-label`s, tooltips, toast/notification copy, input placeholders, validation/error messages, empty-state text, and legal/consent text. A lint rule banning bare string literals in templates and attributes catches these mechanically; a copy review does not.
 - RTL: use logical CSS properties (`margin-inline-start`, not `margin-left`); mirror layout, chevrons, back arrows, and progress direction; do NOT mirror clocks, media-playback icons, checkmarks, or logos; test with `dir="rtl"` early.
 - Formats: all dates/numbers/currency via CLDR-backed APIs ([#numbers-dates-and-units-formatting](#numbers-dates-and-units-formatting)); name fields as single "Full name" or locale-flexible given/family order without assuming Western order ([07-forms-and-input.md](07-forms-and-input.md)); addresses per-country schemas.
 - Fonts: verify glyph coverage for target scripts; CJK needs larger minimum sizes (~12px+ becomes illegible; prefer 14px+); line-height +0.2 for diacritic-heavy scripts.
@@ -716,6 +718,8 @@ Beyond translation, audit per target market:
 - RTL layout does not break navigation, icons, or reading order.
 - Forms accept valid international data (names, addresses, phones) — see [#data-format-matrix](#data-format-matrix).
 - No string is concatenated from translated fragments; plurals/gender use ICU MessageFormat or equivalent.
+- No bare string literals in templates or attributes — all user-facing strings, including `aria-label`s, tooltips, placeholders, validation/error messages, empty states, and toasts, go through the i18n layer (lint-enforceable).
+- Every key exists in every supported locale (completeness check in CI).
 
 **Related:** [#numbers-dates-and-units-formatting](#numbers-dates-and-units-formatting), [#truncation-and-line-length](#truncation-and-line-length), [#inclusive-language](#inclusive-language), [03-visual-design.md](03-visual-design.md) (color meaning), [07-forms-and-input.md](07-forms-and-input.md).
 
@@ -741,8 +745,8 @@ Beyond translation, audit per target market:
 | Error messages | What happened + why + how to fix; no blame, jargon, caps, or humor | Adjacent to source; ban "invalid/illegal"; never color alone (~300M with CVD) |
 | Empty states | Status + how it fills + direct CTA; three types (first-use/cleared/no-results) | ≤2 sentences + CTA; never show during load |
 | Capitalization | Sentence case everywhere (except Apple-native chrome); no ALL CAPS labels | ALL CAPS ~13–20% slower for continuous text; caps only 1–2-word badges + letter-spacing |
-| Numbers & dates | Locale APIs, spelled month, ISO 8601 for machines; relative time <7 days only | "4 Mar 2025"; tabular figures in tables |
+| Numbers & dates | Locale APIs, spelled month, ISO 8601 for machines; relative time <7 days only; pass the user's locale explicitly in server-rendered output | "4 Mar 2025"; tabular figures in tables |
 | Truncation & measure | Wrap by default; truncate only with recovery path; middle-truncate IDs | 50–75 chars/line; clamp 2–3 lines |
 | Hierarchy | Inverted pyramid; answer in first paragraph; front-load first 2 words | Users read ~20–28% of words |
 | Scannability | Descriptive headings, parallel bullets, sparse bold | Heading per 2–4 ¶; 3–7 bullets; ¶ ≤4 sentences |
-| i18n/l10n | +40% expansion headroom, no concatenation, ICU plurals, logical CSS for RTL; flexible names/addresses | 30–40% expansion (100–300% short strings); 6 Arabic plural forms |
+| i18n/l10n | +40% expansion headroom, no concatenation, ICU plurals, logical CSS for RTL; flexible names/addresses; no bare string literals (incl. aria-labels, toasts, placeholders) | 30–40% expansion (100–300% short strings); 6 Arabic plural forms |

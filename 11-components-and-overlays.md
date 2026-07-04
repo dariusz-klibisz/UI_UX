@@ -335,7 +335,7 @@ Lifecycle states to design: opening, open, validation error (resolvable *inside*
 
 **Decision questions:** Must the user finish this before continuing? Is the content short enough? Can every error be resolved inside? What exactly happens on Escape and backdrop click?
 
-**Failure modes:** modal opens but focus stays behind it; user can Tab to the background; modal taller than the viewport with no internal scroll (buttons unreachable — test at small viewport and 200–400% zoom); destructive action receives default focus (a stray Enter deletes something); modal used because it was the easy component, not because blocking was required ([18-patterns-antipatterns.md#modal-overuse](18-patterns-antipatterns.md#modal-overuse); NN/g: modals are for when the user's full attention is genuinely required).
+**Failure modes:** modal opens but focus stays behind it; user can Tab to the background; native `<dialog>` opened via the `open` attribute instead of `showModal()` → non-modal, background still interactive, no focus trap, Escape dead, `aria-modal` false advertising ([06-aria-widget-reference.md](06-aria-widget-reference.md)); modal taller than the viewport with no internal scroll (buttons unreachable — test at small viewport and 200–400% zoom); destructive action receives default focus (a stray Enter deletes something); modal used because it was the easy component, not because blocking was required ([18-patterns-antipatterns.md#modal-overuse](18-patterns-antipatterns.md#modal-overuse); NN/g: modals are for when the user's full attention is genuinely required).
 
 **Verification:** open → Tab around (trapped?) → Escape (closed? focus restored?) → reopen with screen reader (title announced? background silent?) → shrink viewport to 320 px and zoom to 400%.
 
@@ -448,7 +448,7 @@ Every layered surface, before ship:
 | Alert/message | Five severities, used honestly; icon + text, not color alone | Each message has cause + next step |
 | Progress | Determinate > skeleton > indeterminate > spinner (short/local only) | Every wait has an error/timeout path |
 | Empty state | Cause + next action + recovery + right tone, per cause | Distinguishable from load failure |
-| Modal | Only when the user must act first; focus in, inert behind, trap, Escape, restore | 320 px + 400% zoom pass |
+| Modal | Only when the user must act first; native `<dialog>` via `showModal()`; focus in, inert behind, trap, Escape, restore | 320 px + 400% zoom pass |
 | Alert dialog | Object + consequence + reversibility + explicit label ("Delete project", not "OK") | Enter-on-open doesn't destroy |
 | Drawer | Secondary task with context; unsaved changes never silently lost | Backdrop click vs. dirty form |
 | Popover | Interactive contextual content; Escape + focus restore | Edge collision, no clipping |

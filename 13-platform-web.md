@@ -356,6 +356,7 @@ This file covers UX concerns specific to the web platform: responsive design, br
 **Implementation guidance:**
 - If SPA: router must handle scroll restoration, focus-to-heading on navigation + live-region announcement, title updates, real `<a href>` links, error boundaries per route.
 - If MPA: speculation-rules prefetch for instant-feel; View Transitions API for continuity ([04-interaction-design.md](04-interaction-design.md#view-transitions)).
+- If server-rendering with hydration: format dates/numbers with the user's resolved locale passed explicitly, never the server's ambient locale — mismatched output causes hydration errors and text that flickers on load ([09 › Numbers, dates, and units formatting](09-content-ux-writing.md#numbers-dates-and-units-formatting)).
 - Decide per route-group, not per company religion.
 
 **Verification checklist (SPA routing):**
@@ -469,6 +470,11 @@ This file covers UX concerns specific to the web platform: responsive design, br
 - Copy: plain language, purpose-first ("We use cookies for analytics and ads personalization"), no guilt trips ([09-content-ux-writing.md](09-content-ux-writing.md)).
 - Honor Global Privacy Control signals where jurisdictionally relevant; log consent states auditable.
 
+**Verification checklist (consent wiring integrity):**
+- [ ] "Accept all" actually enables every category — an accept-all that silently leaves a category off corrupts the consent record.
+- [ ] Rejecting all optional categories is persisted as an explicit rejection event, not as absence of a record.
+- [ ] The stored consent decision is derived from the actual category choices, not from which button was pressed.
+
 **Related:** [18-patterns-antipatterns.md](18-patterns-antipatterns.md#dark-patterns-catalog), [09-content-ux-writing.md](09-content-ux-writing.md).
 
 **Sources:** [EDPB cookie banner taskforce report](https://www.edpb.europa.eu/our-work-tools/our-documents/other/report-work-undertaken-cookie-banner-taskforce_en), [GDPR Art. 7](https://gdpr-info.eu/art-7-gdpr/).
@@ -573,7 +579,7 @@ This file covers UX concerns specific to the web platform: responsive design, br
 | Progressive enhancement | Core tasks survive JS failure | ~1% JS-failure baseline |
 | PWA | Offline + install after engagement | Custom prompt, never on load |
 | Scroll | Never hijack; budget sticky chrome | Rules of thumb: ≤64px header; ≤25% viewport |
-| Consent | Reject as easy as accept; or need no banner | Equal prominence, layer one |
+| Consent | Reject as easy as accept; or need no banner; stored decision mirrors actual category choices | Equal prominence, layer one |
 | Permissions | Two-step soft prompt, in context | Never on load |
 | SEO-UX | Structure once, benefit twice | Titles ~50–60 chars, front-loaded |
 | Agent-friendly content | Real text, semantics, labeled forms — a11y/SEO done right covers agents | Readable with CSS/images off |

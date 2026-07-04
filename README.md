@@ -37,7 +37,7 @@ evidence, concrete numbers, **When to use / When NOT to use** conditions, and
 | [`07-forms-and-input.md`](07-forms-and-input.md) | Layout, labels, input types, validation timing, error design, defaults, autosave, auth UX (NIST, passkeys), high-risk forms |
 | [`08-navigation-ia.md`](08-navigation-ia.md) | IA fundamentals, nav patterns, breadcrumbs, faceted filtering, search, sorting, command palette, scope safety, pagination, URLs |
 | [`09-content-ux-writing.md`](09-content-ux-writing.md) | Plain language, voice & tone, microcopy, error/confirmation copy, capitalization, formatting, i18n/l10n |
-| [`10-design-systems.md`](10-design-systems.md) | When (not) to build, design tokens, component APIs, documentation, theming, versioning, governance, adoption |
+| [`10-design-systems.md`](10-design-systems.md) | When (not) to build, design tokens, component APIs, documentation, test hooks, theming, versioning, governance, adoption |
 | [`11-components-and-overlays.md`](11-components-and-overlays.md) | Per-component behavioral contracts; overlay layer-selection matrix; modal/dialog/drawer/popover/tooltip specs |
 | [`12-data-tables-dashboards.md`](12-data-tables-dashboards.md) | Table vs grid selection, table a11y, sorting/filtering, grid editing, bulk actions, chart selection, dashboards |
 | [`13-platform-web.md`](13-platform-web.md) | Responsive design, browser conventions, Core Web Vitals, SPA vs MPA, progressive enhancement, PWA, consent UX |

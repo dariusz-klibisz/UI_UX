@@ -185,6 +185,7 @@ See [11-components-and-overlays.md](11-components-and-overlays.md) for modal con
 - Focus moves inside on open.
 - Focus is trapped while open.
 - Focus restores to trigger or logical next point on close.
+- Native `<dialog>` is opened with `showModal()`, which provides top-layer rendering, `::backdrop`, an inert background, and Escape handling for free (WHATWG HTML / MDN `<dialog>`).
 
 #### Keyboard
 - Escape closes when safe.
@@ -195,6 +196,7 @@ See [11-components-and-overlays.md](11-components-and-overlays.md) for modal con
 - Screen reader can navigate background.
 - Close button unlabeled.
 - Destructive button receives default focus.
+- Native `<dialog>` opened by setting the `open` attribute or calling `show()`: the result is non-modal — no focus trap, no inert background, Escape does not close — while `aria-modal="true"` then actively misreports modality to assistive technology.
 
 ### Disclosure
 
@@ -418,7 +420,7 @@ For WCAG-level verification and screen-reader test procedures, see [05-accessibi
 | Carousel | — | Standard controls; no auto-advance on focus | Auto-rotation with no pause/stop |
 | Checkbox | `<input type="checkbox">` | Space toggles | Custom visual with no checked-state exposure |
 | Combobox | `<select>`/`<input>` where possible | Type to filter; Up/Down; Enter; Escape | Popup existence not exposed to screen reader |
-| Dialog (modal) | `<dialog>` | Escape; Tab/Shift+Tab trapped | Focus escapes behind modal; background not inert |
+| Dialog (modal) | `<dialog>` opened with `showModal()` (never the `open` attribute / `show()`) | Escape; Tab/Shift+Tab trapped | Focus escapes behind modal; background not inert |
 | Disclosure | `<details>`/`<summary>` or `<button>` | Enter/Space toggle | Hidden content still focusable |
 | Grid | `<table>` unless interactive | Arrow keys per cell | Grid role without keyboard model |
 | Landmarks | `<header>`/`<nav>`/`<main>`/`<footer>` etc. | Screen-reader landmark navigation | Multiple unlabelled nav landmarks; no main |
@@ -440,4 +442,5 @@ For WCAG-level verification and screen-reader test procedures, see [05-accessibi
 - [WAI-ARIA Authoring Practices Guide (APG) — Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/), W3C. Per-pattern keyboard interaction and role/state/property requirements.
 - [WAI-ARIA 1.2 Specification](https://www.w3.org/TR/wai-aria-1.2/), W3C Recommendation. Normative role, state, and property definitions.
 - [Using ARIA](https://www.w3.org/TR/using-aria/), W3C. The rules of ARIA use, including the first rule (prefer native HTML) and second rule (don't change native semantics).
+- [HTML Standard — the `dialog` element](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element), WHATWG, and [MDN: `<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog). Native dialog semantics: `showModal()` vs `show()`/the `open` attribute, top-layer rendering, `::backdrop`, and Escape behavior.
 - [Landmark Regions](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/), W3C APG practices.
