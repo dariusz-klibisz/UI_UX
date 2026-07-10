@@ -2,7 +2,7 @@
 
 A comprehensive, decision-oriented reference on UI/UX design principles and state-of-the-art best practices. Platform-agnostic foundations plus dedicated coverage of web, desktop, mobile, and CLI/TUI platforms, domain patterns (e-commerce, SaaS, AI products), and an operational layer of agent checklists and acceptance criteria. Written to be consumed by AI agents and developers making concrete design decisions.
 
-**Corpus:** 22 files, ~14,500 lines. Standards baseline: WCAG 2.2, Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B.
+**Corpus:** 24 files, ~15,500 lines. Standards baseline: WCAG 2.2, Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B.
 
 ## How to use this reference
 
@@ -89,6 +89,8 @@ Caveat: checklists and AI-generated review verdicts are decision support, not a 
 | [19-domain-ecommerce-saas.md](19-domain-ecommerce-saas.md) | Domain: E-commerce, SaaS & Accounts | Listing/PDP/cart/checkout, conversion ethics, enterprise/admin UX (scope visibility, permission-aware UI, bulk safeguards, audit), settings IA + save-behavior models, login patterns, permission prompts, roles, account deletion/export |
 | [20-ai-product-ux.md](20-ai-product-ux.md) | AI Product UX | Interaction paradigms (GUI vs prompting vs agent), HAX-style lifecycle, AI risk tiers, prompt UX, output states (streaming, citations, uncertainty), agentic-action rules (plan preview, activity log, stop), AI accessibility, support chatbots (liability) |
 | [21-agent-checklists.md](21-agent-checklists.md) | Agent Checklists & Acceptance Criteria | Decision checklists, ~40-row pattern-selection matrices, symptom→fix failure-mode diagnostics, testable acceptance criteria per platform/domain, PR-review template, principle tradeoff tables |
+| [22-game-ui-and-hud.md](22-game-ui-and-hud.md) | Game UI & HUD | HUD layout, floating combat text, deep item comparison tooltips, drag-and-drop inventory, radial/context menus, grid formation editor, Tactics/gambit rule-editor UX, dense stat/inventory screens |
+| [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md) | Game Feel, Input & Onboarding | Juice/game feel, reduced motion for combat VFX, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling for dense stats, game localization |
 
 ## Decision tree: "I'm working on X — what do I read?"
 
@@ -99,6 +101,7 @@ Caveat: checklists and AI-generated review verdicts are decision support, not a 
 | Building a desktop app | [14-platform-desktop.md](14-platform-desktop.md) → [04](04-interaction-design.md) → [03](03-visual-design.md#density-modes) |
 | Building a mobile app | [15-platform-mobile.md](15-platform-mobile.md) → [04](04-interaction-design.md) → [08](08-navigation-ia.md) |
 | Building a CLI tool | [16-platform-cli-tui.md](16-platform-cli-tui.md) (self-contained) → [01](01-core-principles.md#postels-law) |
+| Building a game (combat/HUD/itemization UI) | [22-game-ui-and-hud.md](22-game-ui-and-hud.md) → [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md) → [04](04-interaction-design.md) → [05](05-accessibility.md) |
 | Choosing/implementing a UI component | [21](21-agent-checklists.md) matrices → [11-components-and-overlays.md](11-components-and-overlays.md) → [06-aria-widget-reference.md](06-aria-widget-reference.md) |
 | Designing a form / checkout / signup | [07-forms-and-input.md](07-forms-and-input.md) → [19](19-domain-ecommerce-saas.md) → [09](09-content-ux-writing.md) → [05](05-accessibility.md#forms-accessibility) |
 | Choosing navigation structure | [08-navigation-ia.md](08-navigation-ia.md) → platform file's navigation section |
@@ -149,6 +152,8 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Checkout / cart | [19](19-domain-ecommerce-saas.md), [07](07-forms-and-input.md) |
 | Cognitive load | [02 › Cognitive load theory](02-cognitive-foundations.md#cognitive-load-theory) |
 | Color palettes / color blindness | [03 › Building a UI palette](03-visual-design.md#building-a-ui-palette), [03](03-visual-design.md#color-blindness-and-color-independence), [05](05-accessibility.md#color-independence) |
+| Colorblind-safe rarity/element coding (games) | [23 › Colorblind-safe rarity and element coding](23-game-feel-input-and-onboarding.md#colorblind-safe-rarity-and-element-coding) |
+| Combat text / floating damage numbers | [22 › Floating combat text](22-game-ui-and-hud.md#floating-combat-text) |
 | Command palettes | [14 › Command palettes](14-platform-desktop.md#command-palettes), [08](08-navigation-ia.md) |
 | Component states | [04 › Component states](04-interaction-design.md#component-states), [11](11-components-and-overlays.md) |
 | Confirmation dialogs | [04 › Undo/redo vs confirmation](04-interaction-design.md#undoredo-vs-confirmation-dialogs), [11](11-components-and-overlays.md) |
@@ -164,7 +169,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Density (compact/comfortable) | [03 › Density modes](03-visual-design.md#density-modes), [12](12-data-tables-dashboards.md) |
 | Design tokens | [10 › Design tokens](10-design-systems.md#design-tokens) |
 | Disabled buttons | [11](11-components-and-overlays.md), [18](18-patterns-antipatterns.md) |
-| Drag and drop | [04 › Drag and drop](04-interaction-design.md#drag-and-drop), [14](14-platform-desktop.md#desktop-drag-and-drop) |
+| Drag and drop | [04 › Drag and drop](04-interaction-design.md#drag-and-drop), [14](14-platform-desktop.md#desktop-drag-and-drop), [22 › Drag-and-drop inventory](22-game-ui-and-hud.md#drag-and-drop-inventory) |
 | Empty states | [04 › Empty states](04-interaction-design.md#empty-states), [09](09-content-ux-writing.md), [11](11-components-and-overlays.md) |
 | Environment/tenant scope safety | [08 › Scope and context safety](08-navigation-ia.md), [19](19-domain-ecommerce-saas.md) |
 | Error messages (writing) | [09 › Error message writing](09-content-ux-writing.md#message-design) |
@@ -174,14 +179,19 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | F-pattern / scanning | [02 › Scanning patterns](02-cognitive-foundations.md#scanning-patterns) |
 | Fitts's Law | [01 › Fitts's Law](01-core-principles.md#fittss-law) |
 | Focus indicators | [05 › Focus visible](05-accessibility.md#focus-visible) |
+| Game feel / juice | [23 › Game feel and juice](23-game-feel-input-and-onboarding.md#game-feel-and-juice) |
+| Gamepad / controller navigation | [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation) |
 | Gestalt principles | [01 › Gestalt principles](01-core-principles.md#gestalt-principles) |
 | Gestures | [04 › Touch and pointer gestures](04-interaction-design.md#touch-and-pointer-gestures), [15](15-platform-mobile.md#gestures) |
+| Grid formation editor (games) | [22 › Grid formation editor](22-game-ui-and-hud.md#grid-formation-editor) |
 | Hamburger menu | [08 › Hamburger menu](08-navigation-ia.md#hamburger-menu), [18](18-patterns-antipatterns.md#hamburger-menu) |
 | Haptics | [15 › Haptics](15-platform-mobile.md#haptics) |
+| HUD design | [22 › HUD layout during live action](22-game-ui-and-hud.md#hud-layout-during-live-action) |
 | Hick's Law / choice overload | [01 › Hick's Law](01-core-principles.md#hicks-law), [02](02-cognitive-foundations.md#decision-fatigue-and-choice-overload) |
 | Icons | [03 › Iconography](03-visual-design.md#iconography) |
 | Infinite scroll vs pagination | [08 › Content traversal](08-navigation-ia.md#content-traversal), [18](18-patterns-antipatterns.md#infinite-scroll) |
-| Internationalization (i18n) | [09 › i18n/l10n](09-content-ux-writing.md#global-content) |
+| Input remapping (games) | [23 › Input remapping](23-game-feel-input-and-onboarding.md#input-remapping) |
+| Internationalization (i18n) | [09 › i18n/l10n](09-content-ux-writing.md#global-content), [23 › Game localization](23-game-feel-input-and-onboarding.md#game-localization) |
 | Keyboard shortcuts | [14 › Keyboard shortcuts design](14-platform-desktop.md#keyboard-shortcuts-design) |
 | Keyboard navigation / focus management | [04](04-interaction-design.md#keyboard-interaction-patterns), [05](05-accessibility.md#keyboard-navigation), [06](06-aria-widget-reference.md) |
 | Label placement (forms) | [07 › Label placement](07-forms-and-input.md#label-placement) |
@@ -197,7 +207,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Nielsen's heuristics | [01 › Nielsen's 10 usability heuristics](01-core-principles.md#nielsens-10-usability-heuristics) |
 | Notifications / push | [04](04-interaction-design.md#notifications-and-interruption-design), [15](15-platform-mobile.md#notifications-ux) |
 | Offline design | [15 › Offline](15-platform-mobile.md#offline-and-poor-connectivity), [14](14-platform-desktop.md#offline-first-and-autosave) |
-| Onboarding | [15 › Onboarding](15-platform-mobile.md#onboarding), [14](14-platform-desktop.md#first-run-experience) |
+| Onboarding | [15 › Onboarding](15-platform-mobile.md#onboarding), [14](14-platform-desktop.md#first-run-experience), [23 › Progressive tutorialization](23-game-feel-input-and-onboarding.md#progressive-tutorialization-for-deep-systems) (games) |
 | Optimistic UI | [04 › Optimistic UI](04-interaction-design.md#optimistic-ui) |
 | Orientation (mobile) | [15](15-platform-mobile.md) |
 | Passwords / passkeys | [07 › Password and auth UX](07-forms-and-input.md#password-and-auth-ux) |
@@ -207,9 +217,11 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Plain language | [09 › Plain language](09-content-ux-writing.md#language-foundations) |
 | Progressive disclosure | [02 › Progressive disclosure](02-cognitive-foundations.md#progressive-disclosure) |
 | Progressive enhancement / PWA | [13](13-platform-web.md#progressive-enhancement), [13](13-platform-web.md#pwa-capabilities) |
-| Reduced motion | [05 › Reduced motion](05-accessibility.md#reduced-motion) |
+| Radial / context menus (games) | [22 › Radial and context menus](22-game-ui-and-hud.md#radial-and-context-menus) |
+| Reduced motion | [05 › Reduced motion](05-accessibility.md#reduced-motion), [23 › Reduced motion for combat and idle VFX](23-game-feel-input-and-onboarding.md#reduced-motion-for-combat-and-idle-vfx) |
 | Response time limits (0.1/1/10s) | [04 › Feedback and response time thresholds](04-interaction-design.md#feedback-and-response-time-thresholds) |
 | Responsive design / breakpoints | [13 › Responsive design](13-platform-web.md#responsive-design), [15](15-platform-mobile.md) |
+| Rule-based automation editor / Tactics-gambit UI (games) | [22 › Rule-based automation editor](22-game-ui-and-hud.md#rule-based-automation-editor-tacticsgambit-pattern) |
 | Screen readers / alt text | [05 › Screen readers](05-accessibility.md#screen-readers) |
 | Search | [08 › Search](08-navigation-ia.md#search) |
 | Settings / preferences | [19](19-domain-ecommerce-saas.md) |
@@ -219,8 +231,9 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Tabs (navigation) | [08 › Tabs](08-navigation-ia.md#tabs), [11](11-components-and-overlays.md) |
 | Target sizes (touch) | [05 › Target size](05-accessibility.md#target-size), [15](15-platform-mobile.md#touch-targets) |
 | Test hooks (`data-testid`) | [10 › Stable test hooks](10-design-systems.md#stable-test-hooks) |
+| Text scaling for dense displays (games) | [23 › Text scaling for dense stat displays](23-game-feel-input-and-onboarding.md#text-scaling-for-dense-stat-displays) |
 | Toasts / snackbars | [04 › Notifications](04-interaction-design.md#notifications-and-interruption-design), [09](09-content-ux-writing.md) |
-| Tooltips | [11](11-components-and-overlays.md), [04](04-interaction-design.md#hover-dependence), [06](06-aria-widget-reference.md) |
+| Tooltips | [11](11-components-and-overlays.md), [04](04-interaction-design.md#hover-dependence), [06](06-aria-widget-reference.md), [22 › Deep item comparison tooltips](22-game-ui-and-hud.md#deep-item-comparison-tooltips) (games) |
 | Typography | [03 › Typography](03-visual-design.md#typography) |
 | Undo / redo | [04 › Undo/redo vs confirmation](04-interaction-design.md#undoredo-vs-confirmation-dialogs) |
 | URLs | [13 › URLs as UX](13-platform-web.md#urls-as-ux) |
@@ -266,9 +279,11 @@ The most-cited hard numbers across the corpus:
 - **DTCG** — W3C Design Tokens Community Group (token format standard).
 - **EAA / EN 301 549** — European Accessibility Act (in force 2019, compliance deadline June 28, 2025) and its harmonized technical standard.
 - **Focus order / focus trap** — sequence of keyboard focus; a trap confines focus (correct in modals, a bug elsewhere) ([05](05-accessibility.md), [11](11-components-and-overlays.md)).
+- **Focus-neighbor navigation** — explicit up/down/left/right focus graph driving gamepad/d-pad navigation through a UI, distinct from DOM/tree tab-order ([23](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation)).
 - **HAX** — Microsoft's Human-AI eXperience guidelines ([20](20-ai-product-ux.md)).
 - **HIG** — Human Interface Guidelines (Apple's, GNOME's, generically any platform's).
 - **IA** — information architecture ([08](08-navigation-ia.md)).
+- **Juice / game feel** — layered, often-subliminal feedback (hit-flash, screenshake, reward-moment motion) that makes actions feel impactful beyond their functional outcome ([23](23-game-feel-input-and-onboarding.md#game-feel-and-juice)).
 - **JTBD** — Jobs-to-be-Done framework ([17](17-ux-process-research.md#jobs-to-be-done)).
 - **M3** — Material Design 3 (Google/Android design system).
 - **Mental model** — a user's internal explanation of how a system works ([02](02-cognitive-foundations.md#mental-models-and-conceptual-models)).
@@ -305,6 +320,12 @@ Consolidated list of the most-cited sources across all files, with authority not
 - Carbon (IBM) — https://carbondesignsystem.com/ · Polaris (Shopify) — https://polaris.shopify.com/ · Atlassian — https://atlassian.design/
 - **Command Line Interface Guidelines** — https://clig.dev/. *The CLI/TUI baseline.*
 - Android design/vitals — https://developer.android.com/design/ui · https://developer.android.com/topic/performance/vitals
+
+### Game UX
+
+- **Martin Jonasson & Petri Purho**, "Juice it or lose it" (GDC) — the originating popular reference for game-feel/juice design. *Used for:* [23 › Game feel and juice](23-game-feel-input-and-onboarding.md#game-feel-and-juice).
+- **Godot Engine documentation** — GUI focus/navigation, internationalization — https://docs.godotengine.org/. *Used for:* [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation), [23 › Game localization](23-game-feel-input-and-onboarding.md#game-localization).
+- Genre-convention references (ARPG/loot-comparison tooltips, Fire Emblem/XCOM-style tactics-grid placement, FF12 Gambit / Path of Exile flask-automation as the domain's originating design references for rule-based combat automation) — *used for:* [22-game-ui-and-hud.md](22-game-ui-and-hud.md), cited inline per section; these are widely-documented genre conventions rather than a single canonical source.
 
 ### Research organizations and evidence bases
 
