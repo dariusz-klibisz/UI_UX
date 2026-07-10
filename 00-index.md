@@ -2,7 +2,7 @@
 
 A comprehensive, decision-oriented reference on UI/UX design principles and state-of-the-art best practices. Platform-agnostic foundations plus dedicated coverage of web, desktop, mobile, and CLI/TUI platforms, domain patterns (e-commerce, SaaS, AI products), and an operational layer of agent checklists and acceptance criteria. Written to be consumed by AI agents and developers making concrete design decisions.
 
-**Corpus:** 24 files, ~15,500 lines. Standards baseline: WCAG 2.2, Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B.
+**Corpus:** 24 files, ~16,300 lines. Standards baseline: WCAG 2.2, Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B; for games additionally the Game Accessibility Guidelines, Xbox Accessibility Guidelines v3.2, AbleGamers APX, and Valve's Steam Deck compatibility criteria.
 
 ## How to use this reference
 
@@ -90,7 +90,7 @@ Caveat: checklists and AI-generated review verdicts are decision support, not a 
 | [20-ai-product-ux.md](20-ai-product-ux.md) | AI Product UX | Interaction paradigms (GUI vs prompting vs agent), HAX-style lifecycle, AI risk tiers, prompt UX, output states (streaming, citations, uncertainty), agentic-action rules (plan preview, activity log, stop), AI accessibility, support chatbots (liability) |
 | [21-agent-checklists.md](21-agent-checklists.md) | Agent Checklists & Acceptance Criteria | Decision checklists, ~40-row pattern-selection matrices, symptom→fix failure-mode diagnostics, testable acceptance criteria per platform/domain, PR-review template, principle tradeoff tables |
 | [22-game-ui-and-hud.md](22-game-ui-and-hud.md) | Game UI & HUD | HUD layout, floating combat text, deep item comparison tooltips, drag-and-drop inventory, radial/context menus, grid formation editor, Tactics/gambit rule-editor UX, dense stat/inventory screens |
-| [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md) | Game Feel, Input & Onboarding | Juice/game feel, reduced motion for combat VFX, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling for dense stats, game localization |
+| [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md) | Game Feel, Input & Onboarding | Juice/game feel, reduced motion for combat VFX, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling for dense stats, subtitles/captions, audio & communication accessibility (CVAA), screen readers/non-visual play, game localization, game settings baseline |
 
 ## Decision tree: "I'm working on X — what do I read?"
 
@@ -139,6 +139,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Affordances / signifiers | [01 › Affordances](01-core-principles.md#affordances), [04](04-interaction-design.md#affordances-and-signifiers-in-practice) |
 | AI risk tiers / agentic actions | [20](20-ai-product-ux.md) |
 | ARIA (principles) | [05 › ARIA](05-accessibility.md#aria); per-widget: [06](06-aria-widget-reference.md) |
+| Audio UX / volume controls (games) | [23 › Audio UX and communication accessibility](23-game-feel-input-and-onboarding.md#audio-ux-and-communication-accessibility) |
 | Autofill / autocomplete attributes | [07 › Defaults and prefill](07-forms-and-input.md#defaults-and-prefill) |
 | Autosave / drafts | [07 › Autosave](07-forms-and-input.md#autosave-and-draft-recovery) ([14](14-platform-desktop.md#offline-first-and-autosave)) |
 | Back button behavior | [13 › Browser conventions](13-platform-web.md#browser-conventions), [15 › Back behavior](15-platform-mobile.md#back-behavior) |
@@ -149,6 +150,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Card sorting / tree testing | [08 › IA fundamentals](08-navigation-ia.md#ia-fundamentals) |
 | Carousels | [18 › Auto-rotating](18-patterns-antipatterns.md#auto-rotating-carousels) |
 | Charts / data visualization | [12 › Dashboards](12-data-tables-dashboards.md) |
+| Chat / player-communication accessibility (CVAA) | [23 › Audio UX and communication accessibility](23-game-feel-input-and-onboarding.md#audio-ux-and-communication-accessibility) |
 | Checkout / cart | [19](19-domain-ecommerce-saas.md), [07](07-forms-and-input.md) |
 | Cognitive load | [02 › Cognitive load theory](02-cognitive-foundations.md#cognitive-load-theory) |
 | Color palettes / color blindness | [03 › Building a UI palette](03-visual-design.md#building-a-ui-palette), [03](03-visual-design.md#color-blindness-and-color-independence), [05](05-accessibility.md#color-independence) |
@@ -180,6 +182,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Fitts's Law | [01 › Fitts's Law](01-core-principles.md#fittss-law) |
 | Focus indicators | [05 › Focus visible](05-accessibility.md#focus-visible) |
 | Game feel / juice | [23 › Game feel and juice](23-game-feel-input-and-onboarding.md#game-feel-and-juice) |
+| Game settings / options menu baseline | [23 › Game settings baseline](23-game-feel-input-and-onboarding.md#game-settings-baseline) |
 | Gamepad / controller navigation | [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation) |
 | Gestalt principles | [01 › Gestalt principles](01-core-principles.md#gestalt-principles) |
 | Gestures | [04 › Touch and pointer gestures](04-interaction-design.md#touch-and-pointer-gestures), [15](15-platform-mobile.md#gestures) |
@@ -222,11 +225,12 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Response time limits (0.1/1/10s) | [04 › Feedback and response time thresholds](04-interaction-design.md#feedback-and-response-time-thresholds) |
 | Responsive design / breakpoints | [13 › Responsive design](13-platform-web.md#responsive-design), [15](15-platform-mobile.md) |
 | Rule-based automation editor / Tactics-gambit UI (games) | [22 › Rule-based automation editor](22-game-ui-and-hud.md#rule-based-automation-editor-tacticsgambit-pattern) |
-| Screen readers / alt text | [05 › Screen readers](05-accessibility.md#screen-readers) |
+| Screen readers / alt text | [05 › Screen readers](05-accessibility.md#screen-readers), [23 › Screen readers and non-visual play](23-game-feel-input-and-onboarding.md#screen-readers-and-non-visual-play) (games) |
 | Search | [08 › Search](08-navigation-ia.md#search) |
-| Settings / preferences | [19](19-domain-ecommerce-saas.md) |
+| Settings / preferences | [19](19-domain-ecommerce-saas.md), [23 › Game settings baseline](23-game-feel-input-and-onboarding.md#game-settings-baseline) (games) |
 | Sorting | [08 › Sorting](08-navigation-ia.md), [12](12-data-tables-dashboards.md) |
 | SPA vs MPA | [13 › SPA vs MPA](13-platform-web.md#spa-vs-mpa) |
+| Subtitles / captions (games) | [23 › Subtitles and captions](23-game-feel-input-and-onboarding.md#subtitles-and-captions) |
 | SUS / UX metrics | [17 › UX metrics frameworks](17-ux-process-research.md#ux-metrics-frameworks) |
 | Tabs (navigation) | [08 › Tabs](08-navigation-ia.md#tabs), [11](11-components-and-overlays.md) |
 | Target sizes (touch) | [05 › Target size](05-accessibility.md#target-size), [15](15-platform-mobile.md#touch-targets) |
@@ -266,13 +270,20 @@ The most-cited hard numbers across the corpus:
 | #121212 | Dark-mode base surface (not pure black) | [03](03-visual-design.md#dark-mode-design) |
 | 30 days | Soft-delete/trash retention convention | [04](04-interaction-design.md#undoredo-vs-confirmation-dialogs) |
 | +30–50% / +100–300% | i18n text expansion: paragraphs / short labels | [09](09-content-ux-writing.md#global-content) |
+| ≤3 flashes/sec | Photosensitive-seizure ceiling (WCAG 2.3.1, hard limit) | [23](23-game-feel-input-and-onboarding.md#reduced-motion-for-combat-and-idle-vfx) |
+| 46px @1080p | Minimum subtitle size (games, GAG); ≤40 chars/line, ≤2 lines | [23](23-game-feel-input-and-onboarding.md#subtitles-and-captions) |
+| 26px / 18px @1080p | XAG minimum default text: console / PC-VR; player-scalable to 200% | [23](23-game-feel-input-and-onboarding.md#text-scaling-for-dense-stat-displays) |
+| 9px @1280×800 | Steam Deck Verified text floor (12px recommended) | [23](23-game-feel-input-and-onboarding.md#text-scaling-for-dense-stat-displays) |
+| ≤8 | Radial-menu segment cap (pie/marking-menu research) | [22](22-game-ui-and-hud.md#radial-and-context-menus) |
 
 ## Glossary
 
 - **A11y** — accessibility. **AT** — assistive technology (screen readers, switch devices).
 - **Affordance / Signifier** — what an object allows / the perceivable cue signaling it ([01](01-core-principles.md#normans-design-principles)).
 - **APG** — W3C ARIA Authoring Practices Guide (widget keyboard/ARIA patterns) ([06](06-aria-widget-reference.md)).
+- **APX** — AbleGamers' Accessible Player Experiences: 22 barrier-first game-accessibility design patterns (12 Access, 10 Challenge) ([23](23-game-feel-input-and-onboarding.md#game-settings-baseline)).
 - **CLS / LCP / INP** — Core Web Vitals: layout shift / largest paint / interaction latency.
+- **CVAA** — US 21st Century Communications and Video Accessibility Act; requires accessible in-game text/voice chat and chat UI since Jan 1, 2019 ([23](23-game-feel-input-and-onboarding.md#audio-ux-and-communication-accessibility)).
 - **Cognitive load** — total working-memory demand a task imposes ([02](02-cognitive-foundations.md#cognitive-load-theory)).
 - **Dark pattern (deceptive pattern)** — design manipulating users against their interest ([18](18-patterns-antipatterns.md)).
 - **Design tokens** — named, tiered design decisions (color.primary, space.4) ([10](10-design-systems.md#design-tokens)).
@@ -280,6 +291,7 @@ The most-cited hard numbers across the corpus:
 - **EAA / EN 301 549** — European Accessibility Act (in force 2019, compliance deadline June 28, 2025) and its harmonized technical standard.
 - **Focus order / focus trap** — sequence of keyboard focus; a trap confines focus (correct in modals, a bug elsewhere) ([05](05-accessibility.md), [11](11-components-and-overlays.md)).
 - **Focus-neighbor navigation** — explicit up/down/left/right focus graph driving gamepad/d-pad navigation through a UI, distinct from DOM/tree tab-order ([23](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation)).
+- **GAG / XAG** — Game Accessibility Guidelines (cross-studio) / Xbox Accessibility Guidelines (Microsoft, v3.2) — the two main game-accessibility references ([23](23-game-feel-input-and-onboarding.md)).
 - **HAX** — Microsoft's Human-AI eXperience guidelines ([20](20-ai-product-ux.md)).
 - **HIG** — Human Interface Guidelines (Apple's, GNOME's, generically any platform's).
 - **IA** — information architecture ([08](08-navigation-ia.md)).
@@ -323,9 +335,16 @@ Consolidated list of the most-cited sources across all files, with authority not
 
 ### Game UX
 
-- **Martin Jonasson & Petri Purho**, "Juice it or lose it" (GDC) — the originating popular reference for game-feel/juice design. *Used for:* [23 › Game feel and juice](23-game-feel-input-and-onboarding.md#game-feel-and-juice).
-- **Godot Engine documentation** — GUI focus/navigation, internationalization — https://docs.godotengine.org/. *Used for:* [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation), [23 › Game localization](23-game-feel-input-and-onboarding.md#game-localization).
-- Genre-convention references (ARPG/loot-comparison tooltips, Fire Emblem/XCOM-style tactics-grid placement, FF12 Gambit / Path of Exile flask-automation as the domain's originating design references for rule-based combat automation) — *used for:* [22-game-ui-and-hud.md](22-game-ui-and-hud.md), cited inline per section; these are widely-documented genre conventions rather than a single canonical source.
+- **Game Accessibility Guidelines** — https://gameaccessibilityguidelines.com/. *Cross-studio collaborative reference (studios, specialists, academics); basic/intermediate/advanced tiers; source of the "four most-complained-about issues" (remapping, text size, colorblindness, subtitle presentation) and the 46px subtitle guidance.*
+- **Xbox Accessibility Guidelines v3.2** (Microsoft) — https://learn.microsoft.com/en-us/gaming/accessibility/guidelines. *Most prescriptive numeric baseline: minimum text sizes (26px console / 18px PC at 1080p), 200% scaling, spacing multipliers; developed with the Gaming & Disability community.*
+- **AbleGamers, Accessible Player Experiences (APX)** — https://accessible.games/accessible-player-experiences/. *22 barrier-first design patterns (12 Access, 10 Challenge); the design-language framing behind much industry practice.*
+- **Valve, Steam Deck Compatibility Review** — https://partner.steamgames.com/doc/steamdeck/compat. *Storefront certification criteria: 9px text floor at 1280×800, controller-glyph matching, default-config completeness.*
+- **FCC, 21st Century Communications and Video Accessibility Act (CVAA)** — https://www.fcc.gov/consumers/guides/21st-century-communications-and-video-accessibility-act-cvaa. *Legal requirement (47 U.S.C. §617): accessible in-game communication features since Jan 1, 2019.*
+- **Martin Jonasson & Petri Purho**, "Juice it or lose it" (2012) — the originating popular reference for game-feel/juice design; **Steve Swink**, *Game Feel* (2008) — the formal treatment. *Used for:* [23 › Game feel and juice](23-game-feel-input-and-onboarding.md#game-feel-and-juice).
+- **Celia Hodent**, *The Gamer's Brain* (2017) — cognitive-science-grounded game UX and onboarding. *Used for:* [23 › Progressive tutorialization](23-game-feel-input-and-onboarding.md#progressive-tutorialization-for-deep-systems).
+- **Fagerholt & Lorentzon**, *Beyond the HUD* (Chalmers, 2011) — the standard diegetic/non-diegetic/spatial/meta game-UI taxonomy. *Used for:* [22 › HUD layout](22-game-ui-and-hud.md#hud-layout-during-live-action).
+- **Godot Engine documentation and release notes** — GUI focus/navigation, internationalization, multiple resolutions/UI scaling, AccessKit screen-reader support (4.5+) — https://docs.godotengine.org/ · https://godotengine.org/releases/. *Used for:* [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation), [23 › Game localization](23-game-feel-input-and-onboarding.md#game-localization), [23 › Screen readers and non-visual play](23-game-feel-input-and-onboarding.md#screen-readers-and-non-visual-play), [23 › Text scaling](23-game-feel-input-and-onboarding.md#text-scaling-for-dense-stat-displays).
+- Genre-convention references (ARPG/loot-comparison tooltips, Fire Emblem/XCOM-style tactics-grid placement, FF12 Gambit / Dragon Age Tactics as the originating design references for rule-based combat automation) — *used for:* [22-game-ui-and-hud.md](22-game-ui-and-hud.md), cited inline per section; these are widely-documented genre conventions rather than a single canonical source.
 
 ### Research organizations and evidence bases
 

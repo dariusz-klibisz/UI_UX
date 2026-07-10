@@ -50,7 +50,7 @@ evidence, concrete numbers, **When to use / When NOT to use** conditions, and
 | [`20-ai-product-ux.md`](20-ai-product-ux.md) | AI interaction paradigms, risk tiers, prompt UX, output states, agentic-action rules, AI accessibility, chatbots |
 | [`21-agent-checklists.md`](21-agent-checklists.md) | Decision checklists, pattern-selection matrices, failure-mode diagnostics, acceptance criteria, PR-review template |
 | [`22-game-ui-and-hud.md`](22-game-ui-and-hud.md) | HUD layout, floating combat text, deep item comparison tooltips, drag-and-drop inventory, radial/context menus, grid formation editor, Tactics/gambit rule-editor UX, dense stat/inventory screens |
-| [`23-game-feel-input-and-onboarding.md`](23-game-feel-input-and-onboarding.md) | Juice/game feel, reduced motion, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling, game localization |
+| [`23-game-feel-input-and-onboarding.md`](23-game-feel-input-and-onboarding.md) | Juice/game feel, reduced motion, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling, subtitles/captions, audio & communication accessibility (CVAA), screen readers, game localization, game settings baseline |
 
 The `00`–`23` numbering is a stable ordering; treat the filenames as durable anchors
 for cross-references.

@@ -52,7 +52,7 @@ winning, and does anything need my attention" without opening a menu.
 - Persistent health/resource bars per unit, positioned near the unit's
   on-grid position (spatially co-located feedback reads faster than a
   separate list — Gestalt proximity, [01-core-principles.md](01-core-principles.md#gestalt-principles)).
-- A compact "needs attention" affordance (a icon/banner) for states the
+- A compact "needs attention" affordance (an icon/banner) for states the
   automation system can't or shouldn't resolve alone — e.g. a wipe risk, a
   rare-drop notification — surfaced without blocking the auto-running combat.
 - Speed/pause controls grouped and persistent (not buried), since adjusting
@@ -81,6 +81,11 @@ persistent element taxes the glance budget for every other element.
   units, squad/global status (currency ticking, timer, wave counter) in one
   consistent HUD region (commonly top or bottom edge, out of the direct-
   manipulation grid area).
+- Keep essential temporary information (damage warnings, drop notifications)
+  inside the player's natural eye-line — near the center of attention, not in
+  a far corner they aren't watching (a documented accessibility guideline,
+  not just a polish concern). Test the HUD against TV safe areas/overscan and
+  device display cutouts on every target platform.
 - Respect the response-time thresholds when the HUD reflects a live value
   updating rapidly (e.g. DPS counters): update visibly but don't re-flow
   layout on every tick — reflowing text at high frequency reads as noise, not
@@ -99,8 +104,11 @@ persistent element taxes the glance budget for every other element.
 [02-cognitive-foundations.md](02-cognitive-foundations.md#progressive-disclosure),
 [#floating-combat-text](#floating-combat-text).
 
-**Sources:** [Nielsen: 10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/),
-general HUD-design practice literature (GDC "UI/UX" talks corpus).
+**Sources:** [Nielsen: 10 Usability Heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/);
+Fagerholt & Lorentzon, *Beyond the HUD — User Interfaces for Increased Player
+Immersion in FPS Games* (Chalmers University of Technology, 2011) — the
+standard diegetic/non-diegetic/spatial/meta taxonomy for game UI placement;
+[Game Accessibility Guidelines: eye-line placement](https://gameaccessibilityguidelines.com/avoid-placing-essential-temporary-information-outside-the-players-eye-line/).
 
 ---
 
@@ -138,9 +146,8 @@ predicts when too many simultaneous signals compete for attention.
 - At high combat-speed multipliers (fast-forward), consider throttling or
   aggregating floating text (e.g. batched per-tick totals rather than
   per-individual-hit) rather than rendering an unreadable, performance-costly
-  flood — see the frame-budget concern in the Coding library's
-  [game-runtime doc](../Coding/13-game-runtime-and-determinism.md#4-object-pooling)
-  for the pooling implementation this requires.
+  flood — aggregation also caps the per-frame rendering and allocation cost
+  of text spawning at exactly the moments the frame budget is tightest.
 - Don't rely on floating text as the *only* record of what happened — pair
   with a persistent combat log for anything the player may want to review
   after the fact (post-fight summary, damage-source breakdown).
@@ -157,10 +164,9 @@ frame budget as everything else on screen during the busiest moments.
   the functional-animation duration range,
   [04-interaction-design.md](04-interaction-design.md#motion-and-animation)).
 - Pool and cap: use object pooling for spawned text instances (never
-  instantiate/destroy per hit — see the Coding library's
-  [object pooling guidance](../Coding/13-game-runtime-and-determinism.md#4-object-pooling)),
-  and define a per-frame/per-unit cap with aggregation (e.g. "+340" summed)
-  once volume exceeds the cap.
+  instantiate/destroy per hit — per-hit allocation causes frame-time spikes
+  during the busiest combat moments), and define a per-frame/per-unit cap
+  with aggregation (e.g. "+340" summed) once volume exceeds the cap.
 - Provide a settings toggle for combat-text density/volume (off / reduced /
   full) — this doubles as a reduced-motion accommodation
   ([23](23-game-feel-input-and-onboarding.md#reduced-motion-for-combat-and-idle-vfx)) and a
@@ -177,8 +183,11 @@ frame budget as everything else on screen during the busiest moments.
 **Related:** [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md#colorblind-safe-rarity-and-element-coding),
 [04-interaction-design.md](04-interaction-design.md#motion-and-animation).
 
-**Sources:** [02-cognitive-foundations.md](02-cognitive-foundations.md#cognitive-load-theory),
-general combat-text-design practice (GDC talks on ARPG/idle-game UI feedback).
+**Sources:** [02-cognitive-foundations.md](02-cognitive-foundations.md#cognitive-load-theory);
+floating combat text as a pattern is genre convention (practitioner folklore,
+hedged accordingly) — its density/toggle treatment is documented in the
+[Game Accessibility Guidelines](https://gameaccessibilityguidelines.com/)
+(visual-noise reduction, configurable feedback).
 
 ---
 
@@ -211,8 +220,8 @@ equivalent to draw from directly.
   separate tooltips.
 - Roll-quality indication (e.g. a fill bar or "close to max roll" label) for
   affixes with a value range, since "perfect rolls" are an explicit chase
-  goal in this itemization design — the tooltip is where that chase becomes
-  legible.
+  goal in ranged-affix itemization designs — the tooltip is where that chase
+  becomes legible.
 
 **When NOT to use / exceptions:**
 - Don't force a full comparison tooltip in contexts with no meaningful
@@ -224,7 +233,7 @@ equivalent to draw from directly.
   silently.
 
 **Pros:** Directly enables the core min-max decision loop; a well-designed
-comparison tooltip *is* a meaningful chunk of this game's core-loop UX.
+comparison tooltip *is* a meaningful chunk of a loot game's core-loop UX.
 **Cons:** High information density risks overwhelming a new player (mitigate
 via progressive disclosure and onboarding — [23](23-game-feel-input-and-onboarding.md#progressive-tutorialization-for-deep-systems));
 touch parity (no hover) requires deliberate interaction design.
@@ -375,9 +384,10 @@ Hick's-Law choice-count guidance applies
   [15-platform-mobile.md](15-platform-mobile.md)) once past ~6–8 items.
 - Avoid radial menus as the *only* path to a critical action needed under
   time pressure unless the segments are large enough to hit reliably in that
-  context — since this is an idle/auto-battler (no combat time pressure on
-  action selection), this is a smaller concern here than in a twitch-action
-  game, but still worth testing at the smallest supported screen size.
+  context — in genres without combat time pressure on action selection
+  (idle/auto-battlers, turn-based games) this is a smaller concern than in a
+  twitch-action game, but still worth testing at the smallest supported
+  screen size.
 
 **Pros:** Fast, precise, low-travel selection on gamepad/touch; visually
 compact; matches players' expectations from the wider ARPG genre.
@@ -386,8 +396,11 @@ first-time users than a labeled list (mitigate with a brief onboarding
 moment — [23](23-game-feel-input-and-onboarding.md#progressive-tutorialization-for-deep-systems)).
 
 **Implementation guidance:**
-- Segment count: keep to ≤8 for a radial menu; beyond that, use a scrollable
-  list-form menu instead.
+- Segment count: keep to ≤8 for a radial menu — pie/marking-menu research
+  (Callahan et al. 1988; Kurtenbach & Buxton) found selection speed and
+  accuracy degrade past ~8 slices; beyond that, use a scrollable list-form
+  menu instead (with built-in search once the list grows long — e.g. Godot
+  4.7's `PopupMenu` optional search bar).
 - Every segment has a visible icon *and* label (icon-only fails the same way
   icon-only tab bars fail — [15-platform-mobile.md](15-platform-mobile.md#mobile-navigation-patterns))
   at minimum on first exposure/tutorial, with icon-only acceptable afterward
@@ -410,9 +423,12 @@ moment — [23](23-game-feel-input-and-onboarding.md#progressive-tutorialization
 [11-components-and-overlays.md](11-components-and-overlays.md),
 [#drag-and-drop-inventory](#drag-and-drop-inventory).
 
-**Sources:** [01-core-principles.md](01-core-principles.md#hicks-law),
-general radial-menu UX practice (widely used in ARPG/action-RPG inventory and
-ability-selection UI).
+**Sources:** [01-core-principles.md](01-core-principles.md#hicks-law);
+Callahan, Hopkins, Weiser & Shneiderman, *An Empirical Comparison of Pie vs.
+Linear Menus* (CHI 1988); Kurtenbach & Buxton's marking-menu research
+(breadth ≤8 for reliable directional selection); radial menus are also a
+first-class concept in [Valve's Steam Input](https://partner.steamgames.com/doc/features/steam_controller/radial_menus)
+gamepad tooling.
 
 ---
 
@@ -489,9 +505,7 @@ always-on.
       re-placement.
 
 **Related:** [04-interaction-design.md](04-interaction-design.md#direct-manipulation),
-[#drag-and-drop-inventory](#drag-and-drop-inventory), the tech-agnostic combat-
-grid/targeting model in the Design library's
-[game architecture doc](../Design/10-game-architecture.md).
+[#drag-and-drop-inventory](#drag-and-drop-inventory).
 
 **Sources:** [04-interaction-design.md](04-interaction-design.md#direct-manipulation),
 general tactics/grid-RPG UI practice (Fire Emblem/XCOM-style placement-UI
@@ -506,9 +520,9 @@ conventions, widely documented in genre UX analyses).
 specific rule-builder that must stay approachable for simple cases while
 supporting deep, precise conditions for advanced players.
 
-**Reasoning / Evidence:** This is the UI-design analog of the deterministic
-rule-evaluation system in the feature spec: a list of prioritized,
-reorderable condition→action rules per hero. No general UI-pattern library
+**Reasoning / Evidence:** This is the UI-design analog of a deterministic
+rule-evaluation system: a list of prioritized, reorderable condition→action
+rules per unit, evaluated first-match-fires. No general UI-pattern library
 covers this domain directly, but it decomposes into well-covered primitives —
 a reorderable list ([11-components-and-overlays.md](11-components-and-overlays.md)),
 structured form inputs for condition-building
@@ -549,9 +563,9 @@ only path.
 visual, screen-reader-navigable tool; the plain-language rule summary is a
 strong comprehension aid unique to this pattern.
 **Cons:** Genuinely complex to design well — the condition/action vocabulary
-can grow large (per the feature spec's own scope-risk note), and every added
-condition type is one more thing the picker UI and the plain-language
-summary generator must both handle correctly.
+tends to grow large over a game's life, and every added condition type is
+one more thing the picker UI and the plain-language summary generator must
+both handle correctly.
 
 **Implementation guidance:**
 - Rule row layout: priority number/handle → condition summary → action
@@ -573,10 +587,12 @@ summary generator must both handle correctly.
   maps directly onto the general error-prevention principle
   ([01-core-principles.md](01-core-principles.md#5-error-prevention)) applied
   to a rule-priority system's most common authoring mistake.
-- Import/export or preset-sharing (named in the feature spec as
-  "shareable/importable rule presets") should reuse the same plain-language
-  summary for review before import, so a player isn't importing an opaque
-  rule blob sight-unseen.
+- Import/export or preset-sharing (if the design supports shareable rule
+  presets) should reuse the same plain-language summary for review before
+  import, so a player isn't importing an opaque rule blob sight-unseen.
+- Progressive disclosure of the builder itself benefits from an
+  accordion/foldable treatment (e.g. Godot 4.5+ `FoldableContainer`) —
+  advanced condition parameters stay collapsed until a rule needs them.
 
 **Verification checklist:**
 - [ ] Rule reordering has a non-drag alternative (buttons/explicit position
@@ -599,9 +615,10 @@ summary generator must both handle correctly.
 learnability), [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md#progressive-tutorialization-for-deep-systems).
 
 **Sources:** General rule-builder/no-code-automation UX practice (comparable
-in structure to email-filter and workflow-automation rule builders); FF12
-Gambit system and Path of Exile flask-automation as the domain's originating
-design references (named in the project's own feature spec).
+in structure to email-filter and workflow-automation rule builders); Final
+Fantasy XII's Gambit system and Dragon Age's Tactics screen are the genre's
+originating, widely-analyzed design references for player-authored combat
+automation.
 
 ---
 
@@ -660,8 +677,8 @@ tutorialization (below/[23](23-game-feel-input-and-onboarding.md#progressive-tut
   slot) follow the general bulk-action safeguards in
   [12-data-tables-dashboards.md](12-data-tables-dashboards.md) — a bulk
   salvage is exactly the kind of destructive, hard-to-reverse action that
-  needs a confirmation step given valuable-item loss is a real cost in this
-  game's economy.
+  needs a confirmation step wherever valuable-item loss is a real cost in
+  the game's economy.
 - Touch density: on mobile, default to a lower density than desktop
   (larger touch targets take priority over information-per-screen —
   [15-platform-mobile.md](15-platform-mobile.md#touch-targets)) even though
