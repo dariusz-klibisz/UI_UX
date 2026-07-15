@@ -573,7 +573,7 @@ This file covers form design end to end: layout, labels, field types, validation
 
 **Definition:** The authentication stack's UX: password fields done right (show toggle, paste allowed, length-first policy), progressive alternatives (magic links, OTP), platform biometrics, and the passkey (WebAuthn) transition.
 
-**Reasoning / Evidence:** NIST SP 800-63B reversed decades of harmful folklore: **length over composition** (no mandatory symbol-soup, no periodic forced rotation, check against breached-password lists instead); composition rules produce predictable patterns (Password1!) while blocking passphrases. WCAG 3.3.8 mandates manager-compatibility (no paste-blocking, no autofill-blocking). Passkeys eliminate phishing and recall entirely — the strategic direction Apple/Google/Microsoft ship today.
+**Reasoning / Evidence:** NIST SP 800-63B reversed decades of harmful folklore: **length over composition** (no mandatory symbol-soup, no periodic forced rotation, check against breached-password lists instead); composition rules produce predictable patterns (Password1!) while blocking passphrases. Revision 4 (July 2025) reinforces the same direction with explicit "SHALL NOT" language: organizations shall not require periodic rotation absent evidence of compromise, and shall not impose composition rules beyond length and breach-list screening. WCAG 3.3.8 mandates manager-compatibility (no paste-blocking, no autofill-blocking). Passkeys eliminate phishing and recall entirely — the strategic direction Apple/Google/Microsoft ship today.
 
 **When to use:**
 - Passwords (while they remain): minimum 8 chars (12+ encouraged) with no composition demands, live requirement checklist during creation, show-password toggle, `autocomplete="new-password"/"current-password"`, breached-list check with helpful rejection.
@@ -598,7 +598,7 @@ This file covers form design end to end: layout, labels, field types, validation
 
 **Related:** [05-accessibility.md](05-accessibility.md#accessible-authentication), [#inline-validation-timing](#inline-validation-timing), [15-platform-mobile.md](15-platform-mobile.md#mobile-forms).
 
-**Sources:** [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html), [WebAuthn / passkeys](https://www.w3.org/TR/webauthn-2/), [Understanding WCAG 3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html).
+**Sources:** [NIST SP 800-63B, Rev. 4 (July 2025)](https://pages.nist.gov/800-63-4/sp800-63b.html), [WebAuthn / passkeys](https://www.w3.org/TR/webauthn-2/), [Understanding WCAG 3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html).
 
 ---
 
