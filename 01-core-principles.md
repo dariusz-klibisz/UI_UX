@@ -4,7 +4,7 @@
 
 ## Scope
 
-This file covers the foundational, platform-agnostic principles of interface design: Nielsen's 10 usability heuristics, Don Norman's design principles, Gestalt perception principles, the "Laws of UX" (empirical rules such as Fitts's and Hick's laws), Shneiderman's Eight Golden Rules, and the ISO 9241-110 dialogue principles. The cognitive psychology underlying many of these is expanded in [02-cognitive-foundations.md](02-cognitive-foundations.md). Applied visual rules are in [03-visual-design.md](03-visual-design.md); interaction mechanics in [04-interaction-design.md](04-interaction-design.md); evaluation methods that use these principles (heuristic evaluation) in [17-ux-process-research.md](17-ux-process-research.md).
+This file covers the foundational, platform-agnostic principles of interface design: Nielsen's 10 usability heuristics, Don Norman's design principles, Gestalt perception principles, the "Laws of UX" (empirical rules such as Fitts's and Hick's laws), Shneiderman's Eight Golden Rules, and the ISO 9241 standards family (the -11 usability definition and -110 dialogue principles). The cognitive psychology underlying many of these is expanded in [02-cognitive-foundations.md](02-cognitive-foundations.md). Applied visual rules are in [03-visual-design.md](03-visual-design.md); interaction mechanics in [04-interaction-design.md](04-interaction-design.md); evaluation methods that use these principles (heuristic evaluation) in [17-ux-process-research.md](17-ux-process-research.md).
 
 ## Contents
 
@@ -52,6 +52,7 @@ This file covers the foundational, platform-agnostic principles of interface des
   - [Parkinson's Law](#parkinsons-law)
 - [Rule sets and standards](#rule-sets-and-standards)
   - [Shneiderman's Eight Golden Rules](#shneidermans-eight-golden-rules)
+  - [ISO 9241-11: usability defined](#iso-9241-11-usability-defined)
   - [ISO 9241-110 dialogue principles](#iso-9241-110-dialogue-principles)
 - [Quick reference](#quick-reference)
 
@@ -1197,6 +1198,30 @@ Named empirical regularities, popularized by Jon Yablonski's lawsofux.com. Treat
 
 **Sources:** [Shneiderman: Eight Golden Rules](https://www.cs.umd.edu/users/ben/goldenrules.html).
 
+### ISO 9241-11: usability defined
+
+**Definition:** The standards-track definition of usability itself: "the extent to which a system, product or service can be used by specified users to achieve specified goals with **effectiveness**, **efficiency** and **satisfaction** in a specified **context of use**" (ISO 9241-11:2018). All four terms are load-bearing — usability is not a fixed property of a design but a relationship between users, goals, and context, which is why the same interface can be "usable" for one context of use and not another.
+
+**Reasoning / Evidence:** This is the definition every other usability standard and most industry usability testing (SUS, SEQ, task-completion-rate studies — [17-ux-process-research.md](17-ux-process-research.md#ux-metrics-frameworks)) implicitly assumes. Effectiveness (did the user complete the goal, and how accurately/completely), efficiency (resources expended relative to accuracy/completeness — typically time-on-task), and satisfaction (freedom from discomfort, positive attitude toward use) map directly onto the three most common classes of usability metric.
+
+**When to use:**
+- Writing a usability test plan or acceptance criterion: state which of the three (effectiveness/efficiency/satisfaction) is being measured and against which context of use, rather than an undifferentiated "is it usable."
+- Procurement, RFPs, or conformance claims that need a citable, internationally standardized usability definition rather than an informal one.
+
+**When NOT to use / exceptions:**
+- For everyday design critique, Nielsen's heuristics ([Nielsen's 10 usability heuristics](#nielsens-10-usability-heuristics)) are more directly actionable; this definition is the measurement frame those heuristics operate inside of, not a substitute for them.
+
+**Pros:** Precise, internationally standardized vocabulary that keeps "usable" from becoming a vague catch-all; each term maps to a measurable UX metric ([17-ux-process-research.md](17-ux-process-research.md#ux-metrics-frameworks)).
+**Cons:** Abstract on its own — needs task-specific operationalization (which metric, which context of use) before it's actionable; the standard document itself is paywalled.
+
+**Implementation guidance:**
+- State the context of use explicitly for any usability claim: user group, goals, and environment (device, task frequency, physical/social setting) — the same feature can pass for a power user in a quiet office and fail for a first-time user on a phone in bright sunlight.
+- Pick one metric per term when writing acceptance criteria: effectiveness → task completion rate/accuracy; efficiency → time-on-task or error-recovery cost; satisfaction → SUS/SEQ score or comparable instrument ([17-ux-process-research.md](17-ux-process-research.md#ux-metrics-frameworks)).
+
+**Related:** [17-ux-process-research.md](17-ux-process-research.md#ux-metrics-frameworks), [ISO 9241-210 human-centred design](17-ux-process-research.md#iso-9241-210-human-centred-design), [#iso-9241-110-dialogue-principles](#iso-9241-110-dialogue-principles).
+
+**Sources:** [ISO 9241-11:2018](https://www.iso.org/standard/63500.html).
+
 ### ISO 9241-110 dialogue principles
 
 **Definition:** The international ergonomics standard's seven interaction principles (2020 revision): suitability for the user's tasks; self-descriptiveness; conformity with user expectations; learnability; controllability; robustness against use errors; user engagement.
@@ -1261,4 +1286,5 @@ Named empirical regularities, popularized by Jon Yablonski's lawsofux.com. Treat
 | Goal-Gradient | Visible progress accelerates finish | Endowed progress (2/10 > 0/8) |
 | Parkinson's Law | Set honest time expectations | State duration up front |
 | Shneiderman #4 | Every flow yields explicit closure | — |
+| ISO 9241-11 | Usability = effectiveness + efficiency + satisfaction, in a stated context of use | 3 terms (2018) |
 | ISO 9241-110 | Standards framing for regulated work | 7 principles (2020) |

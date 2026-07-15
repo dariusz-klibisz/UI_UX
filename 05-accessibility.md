@@ -50,7 +50,7 @@ This file covers accessibility as a design discipline: the legal/business case, 
 
 ### Why accessibility
 
-**Definition:** Designing so people with disabilities — visual, auditory, motor, speech, cognitive, neurological, vestibular, temporary and situational — can perceive, operate, and understand the product. Framed by law (ADA/Section 508 in the US; the European Accessibility Act, which entered into force in 2019 with a compliance deadline of June 28, 2025, using EN 301 549 as the technical standard; similar laws worldwide), by market (~16% of the world population, per WHO, has significant disability; prevalence rises steeply with age), and by quality (the curb-cut effect). Accessibility is not an enhancement layer — it is part of functional correctness.
+**Definition:** Designing so people with disabilities — visual, auditory, motor, speech, cognitive, neurological, vestibular, temporary and situational — can perceive, operate, and understand the product. Framed by law (ADA/Section 508 in the US; the European Accessibility Act, which entered into force in 2019 with a compliance deadline of June 28, 2025, using EN 301 549 as the technical standard; similar laws worldwide), by process standard (**EN 17161:2019**, "Design for All," the European standard requiring organizations to build accessibility into their design/development process rather than retrofit it — a foundational reference behind the EAA), by market (~16% of the world population, per WHO, has significant disability; prevalence rises steeply with age), and by quality (the curb-cut effect). Accessibility is not an enhancement layer — it is part of functional correctness.
 
 **Reasoning / Evidence:** Legal exposure is concrete: thousands of ADA digital lawsuits annually in the US; the EAA extends mandatory compliance to private-sector e-commerce, banking, and consumer software sold in the EU (applicable from June 28, 2025). The curb-cut effect: accommodations built for disability benefit everyone (captions in noisy rooms, keyboard shortcuts for power users, high contrast in sunlight, plain language for everyone). Accessibility work overlaps ~80% with plain good UX.
 
@@ -75,7 +75,7 @@ This file covers accessibility as a design discipline: the legal/business case, 
 
 **Related:** [#inclusive-design-method](#inclusive-design-method), [#wcag-22-structure-and-conformance-levels](#wcag-22-structure-and-conformance-levels), [10-design-systems.md](10-design-systems.md#accessibility-baked-into-components).
 
-**Sources:** [WHO: Disability](https://www.who.int/news-room/fact-sheets/detail/disability-and-health), [European Accessibility Act](https://ec.europa.eu/social/main.jsp?catId=1202), [W3C WAI: Business Case](https://www.w3.org/WAI/business-case/), [EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf).
+**Sources:** [WHO: Disability](https://www.who.int/news-room/fact-sheets/detail/disability-and-health), [European Accessibility Act](https://ec.europa.eu/social/main.jsp?catId=1202), [W3C WAI: Business Case](https://www.w3.org/WAI/business-case/), [EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf), [EN 17161:2019](https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/accessibility/design-for-all/).
 
 ### Inclusive design method
 
@@ -627,9 +627,9 @@ This file covers accessibility as a design discipline: the legal/business case, 
 
 ### Cognitive accessibility
 
-**Definition:** Design for memory, attention, language-processing, and executive-function variation: plain language, consistent patterns, low memory burden, forgiving errors, no time pressure. Guided by W3C's COGA task force ("Making Content Usable for People with Cognitive and Learning Disabilities").
+**Definition:** Design for memory, attention, language-processing, and executive-function variation: plain language, consistent patterns, low memory burden, forgiving errors, no time pressure. Guided by W3C's COGA task force ("Making Content Usable for People with Cognitive and Learning Disabilities") and, since 2020, the international standard **ISO 21801-1** (Cognitive accessibility — Part 1: General guidelines), which covers both digital and built-environment design.
 
-**Reasoning / Evidence:** Cognitive disabilities are the largest disability category and the least served by checkbox-testable criteria; WCAG 2.2's new SCs (redundant entry, accessible auth, consistent help) begin codifying it. Overlap with general usability is near-total — this is [02-cognitive-foundations.md](02-cognitive-foundations.md) with higher stakes.
+**Reasoning / Evidence:** Cognitive disabilities are the largest disability category and the least served by checkbox-testable criteria; WCAG 2.2's new SCs (redundant entry, accessible auth, consistent help) begin codifying it. Overlap with general usability is near-total — this is [02-cognitive-foundations.md](02-cognitive-foundations.md) with higher stakes. ISO 21801-1 gives this area a citable standards-track reference distinct from WCAG's checkbox criteria, useful for the same procurement/conformance contexts as [ISO 9241-110](01-core-principles.md#iso-9241-110-dialogue-principles).
 
 **COGA decision rules (10 cognitive needs → design rules):**
 
@@ -664,7 +664,7 @@ This file covers accessibility as a design discipline: the legal/business case, 
 
 **Related:** [02-cognitive-foundations.md](02-cognitive-foundations.md), [09-content-ux-writing.md](09-content-ux-writing.md#plain-language), [#accessible-authentication](#accessible-authentication), [#inclusive-design-method](#inclusive-design-method).
 
-**Sources:** [W3C: Making Content Usable (COGA)](https://www.w3.org/TR/coga-usable/).
+**Sources:** [W3C: Making Content Usable (COGA)](https://www.w3.org/TR/coga-usable/), [ISO 21801-1:2020](https://www.iso.org/standard/71711.html).
 
 ### Touch/pointer accessibility
 
@@ -779,6 +779,7 @@ This file covers accessibility as a design discipline: the legal/business case, 
 | Requirement | One-line guidance | Key numbers |
 |---|---|---|
 | Legal target | WCAG 2.2 AA everywhere public/sold | EAA compliance deadline June 28, 2025 (in force since 2019) |
+| Design for All (EN 17161) | Build accessibility into process, not retrofit | Core EAA process standard (2019) |
 | Contrast (1.4.3/1.4.11) | Check every pair, both themes | 4.5:1 text; 3:1 large/UI; 7:1 AAA |
 | Target size (2.5.8) | Hit areas, not visuals, must clear; inline links exempt | 24px floor; 44pt/48dp platform |
 | Focus visible (2.4.7/11/13) | Branded ring system, never removed | 2px ring, ≥3:1 vs unfocused state, offset 2px |
@@ -799,6 +800,6 @@ This file covers accessibility as a design discipline: the legal/business case, 
 | Screen readers | Names, alt purpose, structure | NVDA+Chrome, VO+Safari matrix |
 | Forms | Label every input; link every error | autocomplete taxonomy |
 | Reduced motion | Fade replaces move | One media query, tokenized |
-| Cognitive | Plain language, no memory tax, no rush | Grade ≤8; 20s timeout warning |
+| Cognitive | Plain language, no memory tax, no rush | Grade ≤8; 20s timeout warning; ISO 21801-1 (2020) |
 | Zoom (1.4.4) | rem sizing; never block zoom | 200% text; 400% page |
 | Testing | Automation ~57% by issue frequency (~30–40% of issue types); humans the rest | axe in CI + keyboard + SR pass |

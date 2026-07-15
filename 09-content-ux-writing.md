@@ -44,7 +44,7 @@ This file covers the words in interfaces: plain language, microcopy (buttons, li
 
 ### Plain language
 
-**Definition:** Writing that readers can understand the first time they read it: common words, short sentences, active voice, direct address ("you"), and concrete instructions. Codified in the US Plain Writing Act (2010), plainlanguage.gov guidelines, and design-system content standards (GOV.UK, Carbon, Polaris).
+**Definition:** Writing that readers can understand the first time they read it: common words, short sentences, active voice, direct address ("you"), and concrete instructions. Codified in the US Plain Writing Act (2010), plainlanguage.gov guidelines, design-system content standards (GOV.UK, Carbon, Polaris), and — since 2023 — the international standard **ISO 24495-1** (Plain language: governing principles and guidelines), which defines a plain-language document as one whose wording, structure, and design make it easy for the intended readers to find, understand, and use the information they need.
 
 **Reasoning / Evidence:** NN/g's studies with domain experts found that even highly educated specialists prefer plain language — experts scan, are time-pressed, and read above their reading level only when forced; simplified pages improved usability for both experts and lay users. Comprehension gains compound with stress: users in error or money-related contexts read worse than their baseline. GOV.UK's research showed common words ("help," "buy") outperform formal equivalents ("assistance," "purchase") in both comprehension and findability (people search using common words). Plain language is not "dumbing down": it preserves precision while removing decoding effort.
 
@@ -74,7 +74,7 @@ This file covers the words in interfaces: plain language, microcopy (buttons, li
 
 **Related:** [#reading-level-targets](#reading-level-targets), [#content-hierarchy-and-front-loading](#content-hierarchy-and-front-loading), [08-navigation-ia.md](08-navigation-ia.md) (information scent).
 
-**Sources:** [NN/g: Plain Language Is for Everyone, Even Experts](https://www.nngroup.com/articles/plain-language-experts/), [plainlanguage.gov: Federal Plain Language Guidelines](https://www.plainlanguage.gov/guidelines/), [GOV.UK: Writing for GOV.UK / Words to avoid](https://www.gov.uk/guidance/style-guide), [Shopify Polaris: Content fundamentals](https://polaris.shopify.com/content/fundamentals).
+**Sources:** [NN/g: Plain Language Is for Everyone, Even Experts](https://www.nngroup.com/articles/plain-language-experts/), [plainlanguage.gov: Federal Plain Language Guidelines](https://www.plainlanguage.gov/guidelines/), [GOV.UK: Writing for GOV.UK / Words to avoid](https://www.gov.uk/guidance/style-guide), [Shopify Polaris: Content fundamentals](https://polaris.shopify.com/content/fundamentals), [ISO 24495-1:2023](https://www.iso.org/standard/78907.html).
 
 ### Reading level targets
 

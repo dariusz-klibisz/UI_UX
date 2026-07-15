@@ -2,7 +2,7 @@
 
 A comprehensive, decision-oriented reference on UI/UX design principles and state-of-the-art best practices. Platform-agnostic foundations plus dedicated coverage of web, desktop, mobile, and CLI/TUI platforms, domain patterns (e-commerce, SaaS, AI products), and an operational layer of agent checklists and acceptance criteria. Written to be consumed by AI agents and developers making concrete design decisions.
 
-**Corpus:** 24 files, ~16,300 lines. Standards baseline: WCAG 2.2, Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B; for games additionally the Game Accessibility Guidelines, Xbox Accessibility Guidelines v3.2, AbleGamers APX, and Valve's Steam Deck compatibility criteria.
+**Corpus:** 24 files, ~16,300 lines. Standards baseline: WCAG 2.2, the ISO 9241 ergonomics family (usability definition, dialogue principles, human-centred design), ISO/IEC 25010/25065/25066 (SQuaRE product quality and usability-report formats), ISO 24495-1 (plain language), ISO 21801-1 (cognitive accessibility), EN 17161 (Design for All), Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B; for games additionally the Game Accessibility Guidelines, Xbox Accessibility Guidelines v3.2, AbleGamers APX, and Valve's Steam Deck compatibility criteria.
 
 ## How to use this reference
 
@@ -282,6 +282,7 @@ The most-cited hard numbers across the corpus:
 - **Affordance / Signifier** — what an object allows / the perceivable cue signaling it ([01](01-core-principles.md#normans-design-principles)).
 - **APG** — W3C ARIA Authoring Practices Guide (widget keyboard/ARIA patterns) ([06](06-aria-widget-reference.md)).
 - **APX** — AbleGamers' Accessible Player Experiences: 22 barrier-first game-accessibility design patterns (12 Access, 10 Challenge) ([23](23-game-feel-input-and-onboarding.md#game-settings-baseline)).
+- **CIF** — Common Industry Format for usability reporting/requirements (ISO/IEC 25065/25066) ([17](17-ux-process-research.md#usability-testing)).
 - **CLS / LCP / INP** — Core Web Vitals: layout shift / largest paint / interaction latency.
 - **CVAA** — US 21st Century Communications and Video Accessibility Act; requires accessible in-game text/voice chat and chat UI since Jan 1, 2019 ([23](23-game-feel-input-and-onboarding.md#audio-ux-and-communication-accessibility)).
 - **Cognitive load** — total working-memory demand a task imposes ([02](02-cognitive-foundations.md#cognitive-load-theory)).
@@ -293,6 +294,7 @@ The most-cited hard numbers across the corpus:
 - **Focus-neighbor navigation** — explicit up/down/left/right focus graph driving gamepad/d-pad navigation through a UI, distinct from DOM/tree tab-order ([23](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation)).
 - **GAG / XAG** — Game Accessibility Guidelines (cross-studio) / Xbox Accessibility Guidelines (Microsoft, v3.2) — the two main game-accessibility references ([23](23-game-feel-input-and-onboarding.md)).
 - **HAX** — Microsoft's Human-AI eXperience guidelines ([20](20-ai-product-ux.md)).
+- **HCD** — Human-centred design; the iterative context→requirements→design→evaluate process standardized by ISO 9241-210 ([17](17-ux-process-research.md#iso-9241-210-human-centred-design)).
 - **HIG** — Human Interface Guidelines (Apple's, GNOME's, generically any platform's).
 - **IA** — information architecture ([08](08-navigation-ia.md)).
 - **Juice / game feel** — layered, often-subliminal feedback (hit-flash, screenshake, reward-moment motion) that makes actions feel impactful beyond their functional outcome ([23](23-game-feel-input-and-onboarding.md#game-feel-and-juice)).
@@ -304,6 +306,7 @@ The most-cited hard numbers across the corpus:
 - **Progressive disclosure** — show essentials, reveal the rest on demand ([02](02-cognitive-foundations.md#progressive-disclosure)).
 - **RUM** — real user monitoring (field performance data, vs lab) ([13](13-platform-web.md#core-web-vitals)).
 - **SC** — WCAG Success Criterion (e.g., SC 1.4.3).
+- **SQuaRE** — Systems/software Quality Requirements and Evaluation; the ISO/IEC 25000 series, incl. the 25010 product-quality model that names usability as one of eight quality characteristics ([17](17-ux-process-research.md#ux-metrics-frameworks)).
 - **SR** — screen reader. **SUS** — System Usability Scale ([17](17-ux-process-research.md#ux-metrics-frameworks)).
 - **TTY** — terminal session (interactive); TTY-detection gates CLI interactivity ([16](16-platform-cli-tui.md#interactivity-rules)).
 - **TUI** — text/terminal user interface (full-screen, e.g., htop) ([16](16-platform-cli-tui.md#full-screen-tuis)).
@@ -320,7 +323,10 @@ Consolidated list of the most-cited sources across all files, with authority not
 - **WCAG 2.2** — https://www.w3.org/TR/WCAG22/ (quick ref: https://www.w3.org/WAI/WCAG22/quickref/; per-criterion: https://www.w3.org/WAI/WCAG22/Understanding/). *Normative accessibility standard; AA is the practical legal baseline.*
 - **ARIA Authoring Practices Guide** — https://www.w3.org/WAI/ARIA/apg/patterns/. *De facto widget keyboard/ARIA behavior spec; guidance, not normative.* **Using ARIA** — https://www.w3.org/TR/using-aria/.
 - **W3C COGA: Making Content Usable** — https://www.w3.org/TR/coga-usable/. *Cognitive accessibility beyond WCAG.*
-- **EN 301 549** — https://www.etsi.org/deliver/etsi_en/301500_301599/301549/ · **ISO 9241-110:2020** — https://www.iso.org/standard/75258.html
+- **EN 301 549** — https://www.etsi.org/deliver/etsi_en/301500_301599/301549/ · **EN 17161:2019** (Design for All) — https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/accessibility/design-for-all/. *European process standard requiring accessibility built into design/development, not retrofitted; underpins the EAA alongside EN 301 549.*
+- **ISO 9241-11:2018** (usability defined) — https://www.iso.org/standard/63500.html · **ISO 9241-110:2020** (dialogue principles) — https://www.iso.org/standard/75258.html · **ISO 9241-210:2019** (human-centred design) — https://www.iso.org/standard/77520.html. *The ergonomics-of-human-system-interaction family: what usability means, how dialogues should behave, and the process that produces both.*
+- **ISO/IEC 25010:2023** (SQuaRE product quality model) — https://www.iso.org/standard/78176.html · **ISO/IEC 25065:2019** (CIF user requirements) — https://committee.iso.org/standard/72189.html · **ISO/IEC 25066:2016** (CIF usability evaluation reports) — https://www.iso.org/standard/63831.html. *Standardized software-quality and usability-reporting formats; situates usability as one of eight product-quality characteristics.*
+- **ISO 24495-1:2023** (plain language) — https://www.iso.org/standard/78907.html · **ISO 21801-1:2020** (cognitive accessibility) — https://www.iso.org/standard/71711.html · **IEC 62366-1:2015** (usability engineering for medical devices) — https://www.iso.org/standard/63179.html.
 - **NIST SP 800-63B** (authentication) — https://pages.nist.gov/800-63-3/sp800-63b.html. *Overrides folk password wisdom (composition rules, rotation).*
 - HTML autocomplete spec — https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill · XDG Base Directory — https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html · Semantic Versioning — https://semver.org/ · NO_COLOR — https://no-color.org/ · JSON Lines — https://jsonlines.org/
 

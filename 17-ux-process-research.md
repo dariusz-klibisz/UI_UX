@@ -4,12 +4,13 @@
 
 ## Scope
 
-This file covers how design decisions get made and validated: the research-method landscape, research ethics and inclusive research operations, interviews, surveys, personas and Jobs-to-be-Done, journey mapping, usability testing (including the 5-user rule and its limits), heuristic evaluation, cognitive walkthroughs, A/B testing, analytics, UX metrics (SUS, SEQ, NPS, HEART, and operational metrics), prototyping fidelity, iterative process models (double diamond and the GDS phase model), design sprints, design critique, design review rubrics, debt, prioritization, and AI-assisted research and review. The principles these methods verify live in [01-core-principles.md](01-core-principles.md); accessibility-specific testing in [05-accessibility.md](05-accessibility.md#testing-methodology); executable agent-facing review checklists in [21-agent-checklists.md](21-agent-checklists.md).
+This file covers how design decisions get made and validated: the research-method landscape, the ISO 9241-210 human-centred design process, research ethics and inclusive research operations, interviews, surveys, personas and Jobs-to-be-Done, journey mapping, usability testing (including the 5-user rule, its limits, and standardized CIF reporting), heuristic evaluation, cognitive walkthroughs, A/B testing, analytics, UX metrics (SUS, SEQ, NPS, HEART, and operational metrics), prototyping fidelity, iterative process models (double diamond and the GDS phase model), design sprints, design critique, design review rubrics, debt, prioritization, and AI-assisted research and review. The principles these methods verify live in [01-core-principles.md](01-core-principles.md); accessibility-specific testing in [05-accessibility.md](05-accessibility.md#testing-methodology); executable agent-facing review checklists in [21-agent-checklists.md](21-agent-checklists.md).
 
 ## Contents
 
 - [Choosing methods](#choosing-methods)
   - [The research-method landscape](#the-research-method-landscape)
+  - [ISO 9241-210: human-centred design](#iso-9241-210-human-centred-design)
   - [Research ethics and inclusive research operations](#research-ethics-and-inclusive-research-operations)
 - [Discovery methods](#discovery-methods)
   - [Interviews and contextual inquiry](#interviews-and-contextual-inquiry)
@@ -70,6 +71,32 @@ This file covers how design decisions get made and validated: the research-metho
 **Related:** [#usability-testing](#usability-testing), [#ab-testing](#ab-testing), [#interviews-and-contextual-inquiry](#interviews-and-contextual-inquiry).
 
 **Sources:** [NN/g: When to Use Which UX Research Methods](https://www.nngroup.com/articles/which-ux-research-methods/).
+
+### ISO 9241-210: human-centred design
+
+**Definition:** The international standard's process model for human-centred design of interactive systems: a **plan → four iterative activities → deliver** loop, run until an evaluation activity confirms requirements are met. The four activities: **(1) understand and specify the context of use** (who, their goals, their environment); **(2) specify the user requirements**; **(3) produce design solutions** (from low-fidelity to high-fidelity, per the [prototyping fidelity ladder](#prototyping-fidelity-ladder)); **(4) evaluate the designs against requirements** (usability testing, heuristic evaluation, or other methods in this file) — looping back to any earlier activity as evaluation reveals gaps.
+
+**Reasoning / Evidence:** ISO 9241-210:2019 is the standards-track description of what this entire file operationalizes: it names iteration as a first-class requirement (not a fallback when the first design fails) and mandates that design decisions trace back to an explicit, documented context of use and user requirements — not to the designer's or a stakeholder's assumption of what users need. It underpins procurement language and process-conformance claims (EU tenders, regulated/medical software procurement) the same way [ISO 9241-110](01-core-principles.md#iso-9241-110-dialogue-principles) underpins interaction-quality claims and [ISO 9241-11](01-core-principles.md#iso-9241-11-usability-defined) underpins the definition of usability itself.
+
+**When to use:**
+- Structuring a project's process documentation or procurement response where a standards-track description of "how design decisions get made" is required.
+- As a checklist for whether a project is *actually* iterating: are context of use and user requirements documented and revisited, or is "user-centred" asserted without evidence of the activities that would substantiate it?
+
+**When NOT to use / exceptions:**
+- Day-to-day teams don't need to cite the standard to practice its content — the [double diamond](#iterative-design-and-the-double-diamond) and [GDS phase model](#the-gds-phase-model-discovery-alpha-beta-live) describe the same iterate-and-narrow shape in more actionable, less abstract language, and are the better default reference for planning sprints.
+- Not a substitute for any specific method in this file — it's the process frame the methods (interviews, testing, heuristic evaluation) fill in.
+
+**Pros:** Standards authority for process conformance claims; explicitly names context-of-use documentation and iteration as requirements, which resists the common failure mode of treating "user-centred" as a slogan rather than a traceable process.
+**Cons:** Abstract relative to the double diamond/GDS models already in this file; the standard document itself is paywalled; citing it does not substitute for actually running the activities.
+
+**Implementation guidance:**
+- Document context of use and user requirements as artifacts (not tribal knowledge) so the evaluate-and-loop-back activity has something concrete to check designs against.
+- Treat "evaluate" as a gate, not a formality: a design that fails evaluation against documented requirements loops back to an earlier activity (more context research, revised requirements, or a new design pass) rather than shipping with a caveat.
+- Map the four activities onto whichever process model the team already uses ([double diamond](#iterative-design-and-the-double-diamond), [GDS phases](#the-gds-phase-model-discovery-alpha-beta-live)) rather than running a parallel standards-compliance process.
+
+**Related:** [#iterative-design-and-the-double-diamond](#iterative-design-and-the-double-diamond), [#the-gds-phase-model-discovery-alpha-beta-live](#the-gds-phase-model-discovery-alpha-beta-live), [01-core-principles.md](01-core-principles.md#iso-9241-11-usability-defined), [01-core-principles.md](01-core-principles.md#iso-9241-110-dialogue-principles).
+
+**Sources:** [ISO 9241-210:2019](https://www.iso.org/standard/77520.html).
 
 ### Research ethics and inclusive research operations
 
@@ -257,10 +284,11 @@ This file covers how design decisions get made and validated: the research-metho
 - Think-aloud: instruct once, prompt neutrally ("what are you thinking?"), never rescue early — the struggle is the data.
 - Capture: task success (3-level: success/struggled/fail), time, errors, quotes; severity-rate findings (blocker/major/minor/cosmetic × frequency).
 - Report within days: video clips of failures persuade stakeholders better than any deck.
+- For formal/regulated audiences (procurement, contractual conformance, medical/high-risk domains), structure the report per **ISO/IEC 25066** (Common Industry Format, CIF, for usability evaluation reports) and, when specifying requirements up front, **ISO/IEC 25065** (CIF for user requirements) — standardized sections make results comparable across vendors/studies instead of ad hoc.
 
 **Related:** [#the-5-user-rule](#the-5-user-rule), [#heuristic-evaluation](#heuristic-evaluation), [05-accessibility.md](05-accessibility.md#testing-methodology).
 
-**Sources:** [NN/g: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/), [NN/g: Thinking Aloud](https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/).
+**Sources:** [NN/g: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/), [NN/g: Thinking Aloud](https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/), [ISO/IEC 25066:2016](https://www.iso.org/standard/63831.html), [ISO/IEC 25065:2019](https://committee.iso.org/standard/72189.html).
 
 ### The 5-user rule
 
@@ -393,7 +421,7 @@ This file covers how design decisions get made and validated: the research-metho
 
 **Definition:** The standard instruments and frameworks: **SUS** (System Usability Scale: 10 items → 0–100 score; mean ≈ 68, so 68 = 50th percentile, 80+ ≈ top decile); **SEQ** (Single Ease Question, post-task 1–7; benchmark ≈ 5.5); **NPS** (loyalty proxy; methodologically criticized — coarse, volatile, gameable — but organizationally entrenched); **HEART** (Google's framework: Happiness, Engagement, Adoption, Retention, Task success — each with goals→signals→metrics); plus core behavioral trio: task success rate, time-on-task, error rate.
 
-**Reasoning / Evidence:** Validated instruments (SUS: decades of benchmarks across thousands of studies; MeasuringU's rule of thumb is that SUS gives usable estimates around n≈12, though smaller samples widen confidence intervals sharply) beat homegrown "how easy was that 1–10" questions; HEART's contribution is the goals-signals-metrics discipline (metrics chosen to reflect decisions, not availability). NPS criticisms (Bain-marketing origins, statistical information loss from the 11-point trichotomy, question predicting *stated* intent not behavior) justify treating it as a coarse trend, never a design-quality metric.
+**Reasoning / Evidence:** Validated instruments (SUS: decades of benchmarks across thousands of studies; MeasuringU's rule of thumb is that SUS gives usable estimates around n≈12, though smaller samples widen confidence intervals sharply) beat homegrown "how easy was that 1–10" questions; HEART's contribution is the goals-signals-metrics discipline (metrics chosen to reflect decisions, not availability). NPS criticisms (Bain-marketing origins, statistical information loss from the 11-point trichotomy, question predicting *stated* intent not behavior) justify treating it as a coarse trend, never a design-quality metric. Standards-wise, these instruments all measure facets of what **ISO/IEC 25010** (the SQuaRE product-quality model) names **usability** — one of eight top-level software product quality characteristics (alongside functional suitability, performance efficiency, compatibility, reliability, security, maintainability, portability) — useful framing when UX metrics need to sit inside a broader software-quality report rather than stand alone.
 
 **When to use:**
 - SUS: perceived-usability benchmarking across releases/competitors; SEQ: per-task friction tracking in every usability test; HEART: choosing product-level UX metrics deliberately; behavioral trio: summative testing and monitoring.
@@ -413,7 +441,7 @@ This file covers how design decisions get made and validated: the research-metho
 
 **Related:** [#analytics-and-behavioral-data](#analytics-and-behavioral-data), [#usability-testing](#usability-testing).
 
-**Sources:** [MeasuringU: SUS](https://measuringu.com/sus/), [Google HEART framework (Rodden et al.)](https://research.google/pubs/pub36299/), [MeasuringU: SEQ](https://measuringu.com/seq10/).
+**Sources:** [MeasuringU: SUS](https://measuringu.com/sus/), [Google HEART framework (Rodden et al.)](https://research.google/pubs/pub36299/), [MeasuringU: SEQ](https://measuringu.com/seq10/), [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html).
 
 ### Accessibility auditing in process
 
@@ -744,6 +772,7 @@ Sources/guidance: ...
 | Method/Topic | One-line guidance | Key numbers |
 |---|---|---|
 | Method choice | Attitudinal/behavioral × qual/quant; question first | — |
+| ISO 9241-210 (HCD) | Plan → context/requirements/design/evaluate loop, iterate until requirements met | 4 activities (2019) |
 | Research ethics | Consent, accommodations, data protection — every study | No exceptions; proportional apparatus |
 | Interviews | Past specifics, not hypotheticals; observe in context | 5–8 per segment; 45–60 min |
 | Surveys | Validated scales; pilot; never predict behavior | ≤5 min; balanced Likert |
