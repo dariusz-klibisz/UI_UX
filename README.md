@@ -51,8 +51,9 @@ evidence, concrete numbers, **When to use / When NOT to use** conditions, and
 | [`21-agent-checklists.md`](21-agent-checklists.md) | Decision checklists, pattern-selection matrices, failure-mode diagnostics, acceptance criteria, PR-review template |
 | [`22-game-ui-and-hud.md`](22-game-ui-and-hud.md) | HUD layout, floating combat text, deep item comparison tooltips, drag-and-drop inventory, radial/context menus, grid formation editor, Tactics/gambit rule-editor UX, dense stat/inventory screens |
 | [`23-game-feel-input-and-onboarding.md`](23-game-feel-input-and-onboarding.md) | Juice/game feel, reduced motion, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling, subtitles/captions, audio & communication accessibility (CVAA), screen readers, game localization, game settings baseline |
+| [`24-game-monetization-live-service.md`](24-game-monetization-live-service.md) | Loot boxes/gacha legal status, premium/virtual currency design, battle/season passes, storefront scarcity, energy gates and pay-to-skip, ethical storefront baseline, minors' spend protection |
 
-The `00`–`23` numbering is a stable ordering; treat the filenames as durable anchors
+The `00`–`24` numbering is a stable ordering; treat the filenames as durable anchors
 for cross-references.
 
 ---
@@ -75,6 +76,8 @@ Start from the **task in front of you**, then load only what you need.
 - **Building a game (combat/HUD/itemization UI)** → [`22`](22-game-ui-and-hud.md) →
   [`23`](23-game-feel-input-and-onboarding.md) → [`04`](04-interaction-design.md) →
   [`05`](05-accessibility.md).
+- **Designing a game's monetization/storefront** → [`24`](24-game-monetization-live-service.md) →
+  [`18`](18-patterns-antipatterns.md) → [`19`](19-domain-ecommerce-saas.md).
 - **Reviewing a design or PR** → [`21`](21-agent-checklists.md) (diagnostics +
   acceptance criteria) → [`01`](01-core-principles.md) heuristics →
   [`18`](18-patterns-antipatterns.md) detection heuristics.

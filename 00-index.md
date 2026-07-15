@@ -2,7 +2,7 @@
 
 A comprehensive, decision-oriented reference on UI/UX design principles and state-of-the-art best practices. Platform-agnostic foundations plus dedicated coverage of web, desktop, mobile, and CLI/TUI platforms, domain patterns (e-commerce, SaaS, AI products), and an operational layer of agent checklists and acceptance criteria. Written to be consumed by AI agents and developers making concrete design decisions.
 
-**Corpus:** 24 files, ~16,300 lines. Standards baseline: WCAG 2.2, the ISO 9241 ergonomics family (usability definition, dialogue principles, human-centred design), ISO/IEC 25010/25065/25066 (SQuaRE product quality and usability-report formats), ISO 24495-1 (plain language), ISO 21801-1 (cognitive accessibility), EN 17161 (Design for All), Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B; for games additionally the Game Accessibility Guidelines, Xbox Accessibility Guidelines v3.2, AbleGamers APX, and Valve's Steam Deck compatibility criteria.
+**Corpus:** 25 files, ~16,800 lines. Standards baseline: WCAG 2.2, the ISO 9241 ergonomics family (usability definition, dialogue principles, human-centred design), ISO/IEC 25010/25065/25066 (SQuaRE product quality and usability-report formats), ISO 24495-1 (plain language), ISO 21801-1 (cognitive accessibility), EN 17161 (Design for All), Material Design 3, current Apple HIG, Fluent 2, GNOME HIG, clig.dev, NIST SP 800-63B; for games additionally the Game Accessibility Guidelines, Xbox Accessibility Guidelines v3.2, AbleGamers APX, and Valve's Steam Deck compatibility criteria.
 
 ## How to use this reference
 
@@ -91,6 +91,7 @@ Caveat: checklists and AI-generated review verdicts are decision support, not a 
 | [21-agent-checklists.md](21-agent-checklists.md) | Agent Checklists & Acceptance Criteria | Decision checklists, ~40-row pattern-selection matrices, symptom→fix failure-mode diagnostics, testable acceptance criteria per platform/domain, PR-review template, principle tradeoff tables |
 | [22-game-ui-and-hud.md](22-game-ui-and-hud.md) | Game UI & HUD | HUD layout, floating combat text, deep item comparison tooltips, drag-and-drop inventory, radial/context menus, grid formation editor, Tactics/gambit rule-editor UX, dense stat/inventory screens |
 | [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md) | Game Feel, Input & Onboarding | Juice/game feel, reduced motion for combat VFX, gamepad focus-neighbor navigation, input remapping, progressive tutorialization, colorblind-safe rarity/element coding, text scaling for dense stats, subtitles/captions, audio & communication accessibility (CVAA), screen readers/non-visual play, game localization, game settings baseline |
+| [24-game-monetization-live-service.md](24-game-monetization-live-service.md) | Game Monetization & Live-Service Ethics | Loot boxes/gacha (legal status by jurisdiction), premium/virtual currency design, battle/season passes, storefront scarcity, energy gates and pay-to-skip, ethical storefront baseline, minors' spend protection |
 
 ## Decision tree: "I'm working on X — what do I read?"
 
@@ -102,6 +103,7 @@ Caveat: checklists and AI-generated review verdicts are decision support, not a 
 | Building a mobile app | [15-platform-mobile.md](15-platform-mobile.md) → [04](04-interaction-design.md) → [08](08-navigation-ia.md) |
 | Building a CLI tool | [16-platform-cli-tui.md](16-platform-cli-tui.md) (self-contained) → [01](01-core-principles.md#postels-law) |
 | Building a game (combat/HUD/itemization UI) | [22-game-ui-and-hud.md](22-game-ui-and-hud.md) → [23-game-feel-input-and-onboarding.md](23-game-feel-input-and-onboarding.md) → [04](04-interaction-design.md) → [05](05-accessibility.md) |
+| Designing a game's monetization / storefront | [24-game-monetization-live-service.md](24-game-monetization-live-service.md) → [18](18-patterns-antipatterns.md) → [19](19-domain-ecommerce-saas.md#conversion-ethics) |
 | Choosing/implementing a UI component | [21](21-agent-checklists.md) matrices → [11-components-and-overlays.md](11-components-and-overlays.md) → [06-aria-widget-reference.md](06-aria-widget-reference.md) |
 | Designing a form / checkout / signup | [07-forms-and-input.md](07-forms-and-input.md) → [19](19-domain-ecommerce-saas.md) → [09](09-content-ux-writing.md) → [05](05-accessibility.md#forms-accessibility) |
 | Choosing navigation structure | [08-navigation-ia.md](08-navigation-ia.md) → platform file's navigation section |
@@ -121,7 +123,7 @@ Caveat: checklists and AI-generated review verdicts are decision support, not a 
 | Planning research / testing a design | [17-ux-process-research.md](17-ux-process-research.md#the-research-method-landscape) → method-specific entries |
 | Reviewing a design for problems | [21](21-agent-checklists.md) diagnostics → [01](01-core-principles.md) heuristics → [18](18-patterns-antipatterns.md) detection heuristics → [17](17-ux-process-research.md#heuristic-evaluation) |
 | Reviewing a PR that touches UI | [21](21-agent-checklists.md) acceptance criteria + PR template → relevant deep-dive files |
-| Ethics / legal review of persuasion mechanics | [18-patterns-antipatterns.md](18-patterns-antipatterns.md) → [02](02-cognitive-foundations.md#cognitive-biases-in-ux) → [19](19-domain-ecommerce-saas.md) conversion ethics |
+| Ethics / legal review of persuasion mechanics | [18-patterns-antipatterns.md](18-patterns-antipatterns.md) → [02](02-cognitive-foundations.md#cognitive-biases-in-ux) → [19](19-domain-ecommerce-saas.md) conversion ethics → [24](24-game-monetization-live-service.md) for games |
 | Performance as UX | [13](13-platform-web.md#core-web-vitals) → [04](04-interaction-design.md#feedback-and-response-time-thresholds) → [15](15-platform-mobile.md) |
 | Notifications / interruptions | [04](04-interaction-design.md#notifications-and-interruption-design) → [15](15-platform-mobile.md#notifications-ux) → [02](02-cognitive-foundations.md#interruption-cost) |
 | Onboarding / first-run / empty states | [15](15-platform-mobile.md#onboarding) or [14](14-platform-desktop.md#first-run-experience) → [04](04-interaction-design.md#empty-states) → [09](09-content-ux-writing.md) |
@@ -143,6 +145,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Autofill / autocomplete attributes | [07 › Defaults and prefill](07-forms-and-input.md#defaults-and-prefill) |
 | Autosave / drafts | [07 › Autosave](07-forms-and-input.md#autosave-and-draft-recovery) ([14](14-platform-desktop.md#offline-first-and-autosave)) |
 | Back button behavior | [13 › Browser conventions](13-platform-web.md#browser-conventions), [15 › Back behavior](15-platform-mobile.md#back-behavior) |
+| Battle pass / season pass (games) | [24 › Battle passes and season passes](24-game-monetization-live-service.md#battle-passes-and-season-passes) |
 | Breadcrumbs | [08 › Breadcrumbs](08-navigation-ia.md#breadcrumbs) |
 | Bulk actions | [12 › Bulk actions](12-data-tables-dashboards.md), [19](19-domain-ecommerce-saas.md) |
 | Buttons: labels | [09 › Button labels](09-content-ux-writing.md#button-labels) |
@@ -184,6 +187,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Game feel / juice | [23 › Game feel and juice](23-game-feel-input-and-onboarding.md#game-feel-and-juice) |
 | Game settings / options menu baseline | [23 › Game settings baseline](23-game-feel-input-and-onboarding.md#game-settings-baseline) |
 | Gamepad / controller navigation | [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation) |
+| Gacha / loot boxes (games) | [24 › Loot boxes and gacha](24-game-monetization-live-service.md#loot-boxes-and-gacha) |
 | Gestalt principles | [01 › Gestalt principles](01-core-principles.md#gestalt-principles) |
 | Gestures | [04 › Touch and pointer gestures](04-interaction-design.md#touch-and-pointer-gestures), [15](15-platform-mobile.md#gestures) |
 | Grid formation editor (games) | [22 › Grid formation editor](22-game-ui-and-hud.md#grid-formation-editor) |
@@ -193,6 +197,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Hick's Law / choice overload | [01 › Hick's Law](01-core-principles.md#hicks-law), [02](02-cognitive-foundations.md#decision-fatigue-and-choice-overload) |
 | Icons | [03 › Iconography](03-visual-design.md#iconography) |
 | Infinite scroll vs pagination | [08 › Content traversal](08-navigation-ia.md#content-traversal), [18](18-patterns-antipatterns.md#infinite-scroll) |
+| In-game purchases (IAP) / storefront ethics | [24 › Ethical in-game storefront](24-game-monetization-live-service.md#ethical-in-game-storefront) |
 | Input remapping (games) | [23 › Input remapping](23-game-feel-input-and-onboarding.md#input-remapping) |
 | Internationalization (i18n) | [09 › i18n/l10n](09-content-ux-writing.md#global-content), [23 › Game localization](23-game-feel-input-and-onboarding.md#game-localization) |
 | Keyboard shortcuts | [14 › Keyboard shortcuts design](14-platform-desktop.md#keyboard-shortcuts-design) |
@@ -206,6 +211,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Microinteractions | [04 › Microinteractions](04-interaction-design.md#microinteractions) |
 | Modals / dialogs | [11](11-components-and-overlays.md), [14](14-platform-desktop.md#modality), [18](18-patterns-antipatterns.md#modal-overuse) |
 | Modes / mode errors | [04](04-interaction-design.md), [02](02-cognitive-foundations.md#mode-errors) |
+| Monetization / live-service ethics (games) | [24-game-monetization-live-service.md](24-game-monetization-live-service.md) |
 | Motion / animation durations | [04 › Motion and animation](04-interaction-design.md#motion-and-animation) |
 | Nielsen's heuristics | [01 › Nielsen's 10 usability heuristics](01-core-principles.md#nielsens-10-usability-heuristics) |
 | Notifications / push | [04](04-interaction-design.md#notifications-and-interruption-design), [15](15-platform-mobile.md#notifications-ux) |
@@ -214,6 +220,7 @@ Alphabetical map of common topics to their primary entry (secondary locations in
 | Optimistic UI | [04 › Optimistic UI](04-interaction-design.md#optimistic-ui) |
 | Orientation (mobile) | [15](15-platform-mobile.md) |
 | Passwords / passkeys | [07 › Password and auth UX](07-forms-and-input.md#password-and-auth-ux) |
+| Pay-to-win / premium currency (games) | [24 › Energy gates and pay-to-skip](24-game-monetization-live-service.md#energy-gates-and-pay-to-skip), [24 › Premium and virtual currency design](24-game-monetization-live-service.md#premium-and-virtual-currency-design) |
 | Permission prompts | [13](13-platform-web.md), [15](15-platform-mobile.md), [19](19-domain-ecommerce-saas.md) |
 | Personas / JTBD | [17 › Personas](17-ux-process-research.md#personas), [17 › JTBD](17-ux-process-research.md#jobs-to-be-done) |
 | Placeholders | [07 › Labels vs placeholders](07-forms-and-input.md#labels-vs-placeholders) |
@@ -282,6 +289,7 @@ The most-cited hard numbers across the corpus:
 - **Affordance / Signifier** — what an object allows / the perceivable cue signaling it ([01](01-core-principles.md#normans-design-principles)).
 - **APG** — W3C ARIA Authoring Practices Guide (widget keyboard/ARIA patterns) ([06](06-aria-widget-reference.md)).
 - **APX** — AbleGamers' Accessible Player Experiences: 22 barrier-first game-accessibility design patterns (12 Access, 10 Challenge) ([23](23-game-feel-input-and-onboarding.md#game-settings-baseline)).
+- **Battle pass / season pass** — a time-boxed reward track (free + paid tiers) unlocked by play progress; controversial pattern, defensible when completable through ordinary play ([24](24-game-monetization-live-service.md#battle-passes-and-season-passes)).
 - **CIF** — Common Industry Format for usability reporting/requirements (ISO/IEC 25065/25066) ([17](17-ux-process-research.md#usability-testing)).
 - **CLS / LCP / INP** — Core Web Vitals: layout shift / largest paint / interaction latency.
 - **CVAA** — US 21st Century Communications and Video Accessibility Act; requires accessible in-game text/voice chat and chat UI since Jan 1, 2019 ([23](23-game-feel-input-and-onboarding.md#audio-ux-and-communication-accessibility)).
@@ -292,16 +300,19 @@ The most-cited hard numbers across the corpus:
 - **EAA / EN 301 549** — European Accessibility Act (in force 2019, compliance deadline June 28, 2025) and its harmonized technical standard.
 - **Focus order / focus trap** — sequence of keyboard focus; a trap confines focus (correct in modals, a bug elsewhere) ([05](05-accessibility.md), [11](11-components-and-overlays.md)).
 - **Focus-neighbor navigation** — explicit up/down/left/right focus graph driving gamepad/d-pad navigation through a UI, distinct from DOM/tree tab-order ([23](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation)).
+- **Gacha / loot box** — paying real money for a randomized reward from a defined pool; legal status varies sharply by jurisdiction ([24](24-game-monetization-live-service.md#loot-boxes-and-gacha)). **Kompu-gacha** — the specific "complete the set to win a prize" compound mechanic banned in Japan since 2012 (gacha generally remains legal there) ([24](24-game-monetization-live-service.md#loot-boxes-and-gacha)).
 - **GAG / XAG** — Game Accessibility Guidelines (cross-studio) / Xbox Accessibility Guidelines (Microsoft, v3.2) — the two main game-accessibility references ([23](23-game-feel-input-and-onboarding.md)).
 - **HAX** — Microsoft's Human-AI eXperience guidelines ([20](20-ai-product-ux.md)).
 - **HCD** — Human-centred design; the iterative context→requirements→design→evaluate process standardized by ISO 9241-210 ([17](17-ux-process-research.md#iso-9241-210-human-centred-design)).
 - **HIG** — Human Interface Guidelines (Apple's, GNOME's, generically any platform's).
 - **IA** — information architecture ([08](08-navigation-ia.md)).
+- **IAP** — in-game/in-app purchase; real-money or premium-currency spend inside an app ([24](24-game-monetization-live-service.md#ethical-in-game-storefront)). **Premium currency** — a store-issued currency (gems, crystals) bought with real money and spent in-game ([24](24-game-monetization-live-service.md#premium-and-virtual-currency-design)).
 - **Juice / game feel** — layered, often-subliminal feedback (hit-flash, screenshake, reward-moment motion) that makes actions feel impactful beyond their functional outcome ([23](23-game-feel-input-and-onboarding.md#game-feel-and-juice)).
 - **JTBD** — Jobs-to-be-Done framework ([17](17-ux-process-research.md#jobs-to-be-done)).
 - **M3** — Material Design 3 (Google/Android design system).
 - **Mental model** — a user's internal explanation of how a system works ([02](02-cognitive-foundations.md#mental-models-and-conceptual-models)).
 - **MPA / SPA** — multi-page vs single-page web application architecture ([13](13-platform-web.md#spa-vs-mpa)).
+- **Pay-to-win** — a purchase that grants competitive/gameplay advantage unavailable to non-paying players, as distinct from cosmetic-only monetization ([24](24-game-monetization-live-service.md#energy-gates-and-pay-to-skip)).
 - **POUR** — WCAG principles: Perceivable, Operable, Understandable, Robust.
 - **Progressive disclosure** — show essentials, reveal the rest on demand ([02](02-cognitive-foundations.md#progressive-disclosure)).
 - **RUM** — real user monitoring (field performance data, vs lab) ([13](13-platform-web.md#core-web-vitals)).
@@ -351,6 +362,16 @@ Consolidated list of the most-cited sources across all files, with authority not
 - **Fagerholt & Lorentzon**, *Beyond the HUD* (Chalmers, 2011) — the standard diegetic/non-diegetic/spatial/meta game-UI taxonomy. *Used for:* [22 › HUD layout](22-game-ui-and-hud.md#hud-layout-during-live-action).
 - **Godot Engine documentation and release notes** — GUI focus/navigation, internationalization, multiple resolutions/UI scaling, AccessKit screen-reader support (4.5+) — https://docs.godotengine.org/ · https://godotengine.org/releases/. *Used for:* [23 › Gamepad and controller navigation](23-game-feel-input-and-onboarding.md#gamepad-and-controller-navigation), [23 › Game localization](23-game-feel-input-and-onboarding.md#game-localization), [23 › Screen readers and non-visual play](23-game-feel-input-and-onboarding.md#screen-readers-and-non-visual-play), [23 › Text scaling](23-game-feel-input-and-onboarding.md#text-scaling-for-dense-stat-displays).
 - Genre-convention references (ARPG/loot-comparison tooltips, Fire Emblem/XCOM-style tactics-grid placement, FF12 Gambit / Dragon Age Tactics as the originating design references for rule-based combat automation) — *used for:* [22-game-ui-and-hud.md](22-game-ui-and-hud.md), cited inline per section; these are widely-documented genre conventions rather than a single canonical source.
+
+### Game monetization & regulation
+
+- **Belgian Gaming Commission** (2018 loot-box ruling) — https://cms.law/en/aut/publication/loot-boxes-a-treasure-trove-of-gambling-regulatory-issues. *Ruled paid loot boxes meet the Belgian Gambling Act's definition of a game of chance; the strictest enforcement position taken to date.*
+- **Netherlands, Council of State ruling overturning the KSA/EA decision** (March 2022) — https://cms.law/en/nld/legal-updates/Dutch-court-rules-FIFA-loot-boxes-not-a-game-of-chance-revokes-EA-penalty. *Illustrates that this area's case law is contested and reverses, not settled precedent.*
+- **China, Ministry of Culture loot-box regulation** (in force since May 1, 2017) — https://www.gamedeveloper.com/game-platforms/online-games-will-be-required-to-disclose-random-loot-box-odds-in-china. *The one jurisdiction with a long-standing legal probability-disclosure mandate; compliance research finds enforcement uneven.*
+- **Japan, kompu-gacha ban** (Consumer Affairs Agency, 2012) — https://monolith.law/en/general-corporate/game-random-complete-illegal. *Bans one specific compound gacha mechanic under the Prize Display Act; ordinary gacha remains legal and dominant in Japan.*
+- **ESRB, "In-Game Purchases (Includes Random Items)"** (April 2020) — https://www.esrb.org/blog/in-game-purchases-includes-random-items/ · **PEGI, "Paid Random Items" descriptor** (same month) — https://www.playstationlifestyle.net/2020/04/14/pegi-in-game-purchases-new-label/. *Ratings-board disclosure labels; self-regulatory, not purchase-time odds disclosure.*
+- **UK DCMS, loot-box industry-led protections** — https://www.gov.uk/guidance/loot-boxes-in-video-games-update-on-improvements-to-industry-led-protections. *2022 government response opting for industry self-regulation; Ukie's 11 Industry Principles published July 2023.*
+- **FTC, Epic Games/Fortnite settlements** (December 2022) — https://www.ftc.gov/news-events/news/press-releases/2022/12/fortnite-video-game-maker-pay-more-half-billion-dollars-over-ftc-allegations. *$275M COPPA penalty + $245M dark-patterns refund order — the landmark US enforcement precedent for game-purchase-flow design and children's data.*
 
 ### Research organizations and evidence bases
 

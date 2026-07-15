@@ -484,7 +484,7 @@ Legitimate uses and real risks; the entries weigh both.
 
 **Implementation guidance:** Streak freezes/repair (mercy mechanics) as default; celebrate milestones, don't mourn breaks; audit with the [spectrum test](#the-deceptive-neutral-persuasive-spectrum): does the mechanic serve the user's stated goal or the retention dashboard?
 
-**Related:** [01-core-principles.md](01-core-principles.md#goal-gradient-effect), [#infinite-scroll](#infinite-scroll).
+**Related:** [01-core-principles.md](01-core-principles.md#goal-gradient-effect), [#infinite-scroll](#infinite-scroll), [24-game-monetization-live-service.md](24-game-monetization-live-service.md#battle-passes-and-season-passes) (the same controversial-pattern analysis applied to battle/season passes).
 **Sources:** [NN/g: Gamification](https://www.nngroup.com/articles/gamification/).
 
 ### Personalization and filter bubbles
